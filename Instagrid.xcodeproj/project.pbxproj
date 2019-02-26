@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06032FF32223F88A00B0A90E /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06032FF12223F88A00B0A90E /* ThirstySoftRegular.otf */; };
-		06032FF42223F88A00B0A90E /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06032FF22223F88A00B0A90E /* Delm-Medium.otf */; };
+		066C1E0E22254BB800EF6FF7 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06032FF72223FD1C00B0A90E /* Delm-Medium.otf */; };
+		066C1E0F22254BBB00EF6FF7 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06032FF62223FD1C00B0A90E /* ThirstySoftRegular.otf */; };
 		067AF8362223E7D100D9C523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067AF8352223E7D100D9C523 /* AppDelegate.swift */; };
 		067AF8382223E7D100D9C523 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067AF8372223E7D100D9C523 /* ViewController.swift */; };
 		067AF83B2223E7D100D9C523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 067AF8392223E7D100D9C523 /* Main.storyboard */; };
@@ -17,8 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		06032FF12223F88A00B0A90E /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ThirstySoftRegular.otf; path = ../../../../../Downloads/ThirstySoftRegular.otf; sourceTree = "<group>"; };
-		06032FF22223F88A00B0A90E /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Delm-Medium.otf"; path = "../../../../../Downloads/Delm-Medium.otf"; sourceTree = "<group>"; };
+		06032FF62223FD1C00B0A90E /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		06032FF72223FD1C00B0A90E /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		067AF8322223E7D100D9C523 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		067AF8352223E7D100D9C523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		067AF8372223E7D100D9C523 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +39,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06032FF52223FD1200B0A90E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				06032FF72223FD1C00B0A90E /* Delm-Medium.otf */,
+				06032FF62223FD1C00B0A90E /* ThirstySoftRegular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		06032FF82223FD2500B0A90E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		06032FF92223FD3700B0A90E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06032FFA2223FD3E00B0A90E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				067AF8372223E7D100D9C523 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		067AF8292223E7D100D9C523 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +89,15 @@
 		067AF8342223E7D100D9C523 /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
+				06032FF82223FD2500B0A90E /* Model */,
+				06032FF92223FD3700B0A90E /* View */,
+				06032FFA2223FD3E00B0A90E /* Controller */,
+				06032FF52223FD1200B0A90E /* Fonts */,
 				067AF8352223E7D100D9C523 /* AppDelegate.swift */,
-				067AF8372223E7D100D9C523 /* ViewController.swift */,
 				067AF8392223E7D100D9C523 /* Main.storyboard */,
 				067AF83C2223E7D300D9C523 /* Assets.xcassets */,
 				067AF83E2223E7D300D9C523 /* LaunchScreen.storyboard */,
 				067AF8412223E7D300D9C523 /* Info.plist */,
-				06032FF22223F88A00B0A90E /* Delm-Medium.otf */,
-				06032FF12223F88A00B0A90E /* ThirstySoftRegular.otf */,
 			);
 			path = Instagrid;
 			sourceTree = "<group>";
@@ -129,9 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				067AF8402223E7D300D9C523 /* LaunchScreen.storyboard in Resources */,
-				06032FF42223F88A00B0A90E /* Delm-Medium.otf in Resources */,
 				067AF83D2223E7D300D9C523 /* Assets.xcassets in Resources */,
-				06032FF32223F88A00B0A90E /* ThirstySoftRegular.otf in Resources */,
+				066C1E0F22254BBB00EF6FF7 /* ThirstySoftRegular.otf in Resources */,
+				066C1E0E22254BB800EF6FF7 /* Delm-Medium.otf in Resources */,
 				067AF83B2223E7D100D9C523 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

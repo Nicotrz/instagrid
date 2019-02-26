@@ -9,11 +9,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="ThirstySoftRegular.otf">
-            <string>ThirstySoftRegular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -23,29 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="BZf-lU-ij3">
-                                <rect key="frame" x="108.5" y="307.5" width="158" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="52" id="A9A-fP-ryE"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="158" id="TD1-a3-dsd"/>
-                                    <constraint firstAttribute="width" secondItem="BZf-lU-ij3" secondAttribute="height" multiplier="79:26" id="fSt-jo-Yxq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_launch" translatesAutoresizingMaskIntoConstraints="NO" id="5lP-QX-wDr">
+                                <rect key="frame" x="86" y="295" width="203" height="77"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.71932816505432129" green="0.8418317437171936" blue="0.89804965257644653" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="BZf-lU-ij3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="lTe-dk-fI2"/>
-                            <constraint firstItem="BZf-lU-ij3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="q95-tF-Ak8"/>
+                            <constraint firstItem="5lP-QX-wDr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="2Hm-i7-n64"/>
+                            <constraint firstItem="5lP-QX-wDr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RJv-ks-oZT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_launch" width="203" height="77"/>
+    </resources>
 </document>
