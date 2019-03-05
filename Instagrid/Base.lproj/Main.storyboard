@@ -96,8 +96,12 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aug-45-hb7">
                                         <rect key="frame" x="10" y="10" width="335" height="167.66666666666666"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_picture3" translatesAutoresizingMaskIntoConstraints="NO" id="twb-BT-nQe">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="twb-BT-nQe">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="167.66666666666666"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="uG8-HO-szC" appends="YES" id="brJ-4a-3nW"/>
+                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0N-Xw-bZq">
                                                 <rect key="frame" x="146.66666666666666" y="22.333333333333343" width="42" height="123"/>
@@ -124,8 +128,12 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebT-aK-j8I">
                                         <rect key="frame" x="184" y="184" width="161" height="161"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test_picture" translatesAutoresizingMaskIntoConstraints="NO" id="JEh-Yg-MYg">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JEh-Yg-MYg">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="LxF-gD-Q06" appends="YES" id="syS-LG-mW0"/>
+                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AK-so-HE0">
                                                 <rect key="frame" x="59.666666666666657" y="19" width="42" height="123"/>
@@ -152,8 +160,12 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZpQ-y5-VUE">
                                         <rect key="frame" x="10" y="184" width="161" height="161"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test_picture2" translatesAutoresizingMaskIntoConstraints="NO" id="jOA-8i-reS">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOA-8i-reS">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="zT3-Sz-WNk" appends="YES" id="daj-5h-1je"/>
+                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJv-4e-vff">
                                                 <rect key="frame" x="59.666666666666671" y="19" width="42" height="123"/>
@@ -180,8 +192,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ga-l9-tBR">
                                         <rect key="frame" x="10" y="10" width="161" height="161"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test_picture" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-ao-EJl">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-ao-EJl">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="xRv-GO-tXK" appends="YES" id="yZX-VW-ihM"/>
+                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQr-ut-p4D">
                                                 <rect key="frame" x="59" y="21" width="42" height="123"/>
@@ -207,8 +223,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3V-OR-1xp">
                                         <rect key="frame" x="184" y="10" width="161" height="161"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test_picture2" translatesAutoresizingMaskIntoConstraints="NO" id="fOA-7B-kkT">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOA-7B-kkT">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="cx5-jf-aY9" appends="YES" id="Bb9-Ze-oCf"/>
+                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i56-QQ-J6O">
                                                 <rect key="frame" x="59.666666666666657" y="19" width="42" height="123"/>
@@ -235,8 +255,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzd-83-k3S">
                                         <rect key="frame" x="10" y="177.66666666666669" width="335" height="167.33333333333331"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_picture3" translatesAutoresizingMaskIntoConstraints="NO" id="jff-Cb-H0q">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jff-Cb-H0q">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="167.33333333333334"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="VqX-1j-ttO" appends="YES" id="qFe-az-Fvh"/>
+                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buN-ea-oQN">
                                                 <rect key="frame" x="146.66666666666666" y="22" width="42" height="123"/>
@@ -501,25 +525,61 @@
                     <connections>
                         <outlet property="arrowLabel" destination="LVw-ol-HWD" id="mhC-hh-exx"/>
                         <outlet property="firstRectangleImage" destination="twb-BT-nQe" id="A4S-eP-oW2"/>
+                        <outlet property="firstRectanglePlusLabel" destination="z0N-Xw-bZq" id="i3j-gW-QB2"/>
                         <outlet property="firstRectangleView" destination="Aug-45-hb7" id="kPw-Az-Rfh"/>
                         <outlet property="firstSquareImage" destination="bqm-ao-EJl" id="UWE-Vs-2Kc"/>
+                        <outlet property="firstSquarePlusLabel" destination="WQr-ut-p4D" id="rC1-rS-FmL"/>
                         <outlet property="firstSquareView" destination="3Ga-l9-tBR" id="lJ8-ih-WgP"/>
                         <outlet property="fourthSquareImage" destination="JEh-Yg-MYg" id="3d8-mF-YMF"/>
+                        <outlet property="fourthSquarePlusLabel" destination="3AK-so-HE0" id="JJg-ld-mXr"/>
                         <outlet property="fourthSquareView" destination="ebT-aK-j8I" id="A7Y-RJ-KJz"/>
                         <outlet property="myView" destination="Q5N-I0-m2J" id="8Tr-WW-DFD"/>
                         <outlet property="secondRectangleImage" destination="jff-Cb-H0q" id="JIu-E4-7hJ"/>
+                        <outlet property="secondRectanglePlusLabel" destination="buN-ea-oQN" id="6e7-W1-jic"/>
                         <outlet property="secondRectangleView" destination="Yzd-83-k3S" id="FDd-vV-OeH"/>
                         <outlet property="secondSquareImage" destination="fOA-7B-kkT" id="ALN-z8-UZz"/>
+                        <outlet property="secondSquarePlusLabel" destination="i56-QQ-J6O" id="6tn-Pq-dWG"/>
                         <outlet property="secondSquareView" destination="A3V-OR-1xp" id="Ffy-GL-iQO"/>
                         <outlet property="selectedSquareFirst" destination="Atn-fY-Ppm" id="1P8-9S-G2p"/>
                         <outlet property="selectedSquareSecond" destination="W3g-yH-Pd5" id="yDN-sD-hap"/>
                         <outlet property="selectedSquareThird" destination="2Ax-Op-2V0" id="YZN-Kw-Wd3"/>
                         <outlet property="swipeLabel" destination="umQ-bj-GKq" id="2kH-Gg-c05"/>
                         <outlet property="thirdSquareImage" destination="jOA-8i-reS" id="efC-27-Xjj"/>
+                        <outlet property="thirdSquarePlusLabel" destination="eJv-4e-vff" id="r76-ij-xtH"/>
                         <outlet property="thirdSquareView" destination="ZpQ-y5-VUE" id="gMS-rx-BpD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uG8-HO-szC">
+                    <connections>
+                        <action selector="addPictureToFirstRectangle:" destination="BYZ-38-t0r" id="YuS-oC-OOb"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="LxF-gD-Q06">
+                    <connections>
+                        <action selector="addPictureToFourthSquare:" destination="BYZ-38-t0r" id="l0l-RQ-OYP"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="zT3-Sz-WNk">
+                    <connections>
+                        <action selector="addPictureToThirdSquare:" destination="BYZ-38-t0r" id="H0A-sr-YHi"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="xRv-GO-tXK">
+                    <connections>
+                        <action selector="addPictureToFirstSquare:" destination="BYZ-38-t0r" id="rR4-fE-Smr"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="cx5-jf-aY9">
+                    <connections>
+                        <action selector="addPictureToSecondSquare:" destination="BYZ-38-t0r" id="N3y-rF-5yO"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="VqX-1j-ttO">
+                    <connections>
+                        <action selector="addPictureToSecondRectangle:" destination="BYZ-38-t0r" id="Whz-YK-rQb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="52" y="25.862068965517242"/>
         </scene>
@@ -529,8 +589,5 @@
         <image name="Layout 2" width="80" height="80"/>
         <image name="Layout 3" width="80" height="80"/>
         <image name="Selected" width="80" height="80"/>
-        <image name="Test_picture" width="768" height="1024"/>
-        <image name="Test_picture2" width="768" height="1024"/>
-        <image name="test_picture3" width="1024" height="768"/>
     </resources>
 </document>

@@ -25,16 +25,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var myView: PictureView!
     @IBOutlet weak var firstRectangleView: UIView!
     @IBOutlet weak var firstRectangleImage: UIImageView!
+    @IBOutlet weak var firstRectanglePlusLabel: UIButton!
     @IBOutlet weak var secondRectangleView: UIView!
     @IBOutlet weak var secondRectangleImage: UIImageView!
+    @IBOutlet weak var secondRectanglePlusLabel: UIButton!
     @IBOutlet weak var firstSquareView: UIView!
     @IBOutlet weak var firstSquareImage: UIImageView!
+    @IBOutlet weak var firstSquarePlusLabel: UIButton!
     @IBOutlet weak var secondSquareView: UIView!
     @IBOutlet weak var secondSquareImage: UIImageView!
+    @IBOutlet weak var secondSquarePlusLabel: UIButton!
     @IBOutlet weak var thirdSquareView: UIView!
     @IBOutlet weak var thirdSquareImage: UIImageView!
+    @IBOutlet weak var thirdSquarePlusLabel: UIButton!
     @IBOutlet weak var fourthSquareView: UIView!
     @IBOutlet weak var fourthSquareImage: UIImageView!
+    @IBOutlet weak var fourthSquarePlusLabel: UIButton!
     @IBOutlet weak var selectedSquareFirst: UIImageView!
     @IBOutlet weak var selectedSquareSecond: UIImageView!
     @IBOutlet weak var selectedSquareThird: UIImageView!
@@ -57,11 +63,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             arrowLabel.text = "^"
         }
     }
+    
+
 
     @IBAction func addPictureToFirstRectangle(_ sender: Any) {
         callPicker(withPicker: .firstRectangle)
     }
-    
+        
     @IBAction func addPictureToSecondRectangle(_ sender: Any) {
         callPicker(withPicker: .secondRectangle)
     }
@@ -94,27 +102,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         // The info dictionary may contain multiple representations of the image. You want to use the original.
-        guard let selectedImage = info[.originalImage] as? UIImage else {
+        guard let selectedImage = info[.editedImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         
         // Set photoImageView to display the selected image.
         switch pickerChoose {
         case .firstRectangle:
-            firstRectangleImage.image = selectedImage
+            setImage(ofView: firstRectangleImage, image: selectedImage, withPlusLabel: firstRectanglePlusLabel)
         case .secondRectangle:
-            secondRectangleImage.image = selectedImage
+            setImage(ofView: secondRectangleImage, image: selectedImage, withPlusLabel: secondRectanglePlusLabel)
         case .firstSquare:
-            firstSquareImage.image = selectedImage
+            setImage(ofView: firstSquareImage, image: selectedImage, withPlusLabel: firstSquarePlusLabel)
         case .secondSquare:
-            secondSquareImage.image = selectedImage
+            setImage(ofView: secondSquareImage, image: selectedImage, withPlusLabel: secondSquarePlusLabel)
         case .thirdSquare:
-            thirdSquareImage.image = selectedImage
+            setImage(ofView: thirdSquareImage, image: selectedImage, withPlusLabel: thirdSquarePlusLabel)
         case .fourthSquare:
-            fourthSquareImage.image = selectedImage
-        }        
+            setImage(ofView: fourthSquareImage, image: selectedImage, withPlusLabel: fourthSquarePlusLabel)
+        }
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setImage (ofView imageView: UIImageView, image: UIImage, withPlusLabel label: UIButton ) {
+        imageView.image = image
+        imageView.isHidden = false
+        label.isHidden = true
+        imageView.isUserInteractionEnabled = true
     }
 
     //handle the cancel
