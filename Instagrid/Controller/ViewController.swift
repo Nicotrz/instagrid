@@ -23,27 +23,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var pickerChoose: PickerChoose = .firstSquare
     
     @IBOutlet weak var myView: PictureView!
+    
     @IBOutlet weak var firstRectangleView: UIView!
     @IBOutlet weak var firstRectangleImage: UIImageView!
     @IBOutlet weak var firstRectanglePlusLabel: UIButton!
+    
     @IBOutlet weak var secondRectangleView: UIView!
     @IBOutlet weak var secondRectangleImage: UIImageView!
     @IBOutlet weak var secondRectanglePlusLabel: UIButton!
+    
     @IBOutlet weak var firstSquareView: UIView!
     @IBOutlet weak var firstSquareImage: UIImageView!
     @IBOutlet weak var firstSquarePlusLabel: UIButton!
+    
     @IBOutlet weak var secondSquareView: UIView!
     @IBOutlet weak var secondSquareImage: UIImageView!
     @IBOutlet weak var secondSquarePlusLabel: UIButton!
+    
     @IBOutlet weak var thirdSquareView: UIView!
     @IBOutlet weak var thirdSquareImage: UIImageView!
     @IBOutlet weak var thirdSquarePlusLabel: UIButton!
+    
     @IBOutlet weak var fourthSquareView: UIView!
     @IBOutlet weak var fourthSquareImage: UIImageView!
     @IBOutlet weak var fourthSquarePlusLabel: UIButton!
+    
     @IBOutlet weak var selectedSquareFirst: UIImageView!
     @IBOutlet weak var selectedSquareSecond: UIImageView!
     @IBOutlet weak var selectedSquareThird: UIImageView!
+    
     @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var arrowLabel: UILabel!
     
