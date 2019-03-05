@@ -99,6 +99,16 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_picture3" translatesAutoresizingMaskIntoConstraints="NO" id="twb-BT-nQe">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="167.66666666666666"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0N-Xw-bZq">
+                                                <rect key="frame" x="146.66666666666666" y="22.333333333333343" width="42" height="123"/>
+                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addPictureToFirstRectangle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WOU-z3-ZIH"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -106,7 +116,9 @@
                                             <constraint firstItem="twb-BT-nQe" firstAttribute="width" secondItem="Aug-45-hb7" secondAttribute="width" id="Vt5-gV-t02"/>
                                             <constraint firstItem="twb-BT-nQe" firstAttribute="leading" secondItem="Aug-45-hb7" secondAttribute="leading" id="ecV-Qj-PDH"/>
                                             <constraint firstItem="twb-BT-nQe" firstAttribute="height" secondItem="Aug-45-hb7" secondAttribute="height" id="qZ0-3F-hrB"/>
+                                            <constraint firstItem="z0N-Xw-bZq" firstAttribute="centerY" secondItem="Aug-45-hb7" secondAttribute="centerY" id="qiN-jm-hzb"/>
                                             <constraint firstAttribute="width" secondItem="Aug-45-hb7" secondAttribute="height" multiplier="16:8" id="r8b-Xq-E3T"/>
+                                            <constraint firstItem="z0N-Xw-bZq" firstAttribute="centerX" secondItem="Aug-45-hb7" secondAttribute="centerX" id="z17-Ar-lw6"/>
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebT-aK-j8I">
@@ -115,12 +127,24 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test_picture" translatesAutoresizingMaskIntoConstraints="NO" id="JEh-Yg-MYg">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AK-so-HE0">
+                                                <rect key="frame" x="59.666666666666657" y="19" width="42" height="123"/>
+                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addPictureToFourthSquare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NEd-ph-Ow5"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="JEh-Yg-MYg" firstAttribute="leading" secondItem="ebT-aK-j8I" secondAttribute="leading" id="6KU-mP-hUo"/>
+                                            <constraint firstItem="3AK-so-HE0" firstAttribute="centerX" secondItem="ebT-aK-j8I" secondAttribute="centerX" id="SK0-2y-dcm"/>
                                             <constraint firstAttribute="width" secondItem="ebT-aK-j8I" secondAttribute="height" multiplier="1:1" id="Xbx-Wr-MsP"/>
                                             <constraint firstItem="JEh-Yg-MYg" firstAttribute="top" secondItem="ebT-aK-j8I" secondAttribute="top" id="dh3-pG-DwI"/>
+                                            <constraint firstItem="3AK-so-HE0" firstAttribute="centerY" secondItem="ebT-aK-j8I" secondAttribute="centerY" id="q6M-Yi-gZ7"/>
                                             <constraint firstItem="JEh-Yg-MYg" firstAttribute="width" secondItem="ebT-aK-j8I" secondAttribute="width" id="qt2-XQ-NwA"/>
                                             <constraint firstItem="JEh-Yg-MYg" firstAttribute="height" secondItem="ebT-aK-j8I" secondAttribute="height" id="ue8-DE-Ni8"/>
                                         </constraints>
@@ -131,13 +155,25 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test_picture2" translatesAutoresizingMaskIntoConstraints="NO" id="jOA-8i-reS">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJv-4e-vff">
+                                                <rect key="frame" x="59.666666666666671" y="19" width="42" height="123"/>
+                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addPictureToThirdSquare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jau-lt-Z9q"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="eJv-4e-vff" firstAttribute="centerX" secondItem="ZpQ-y5-VUE" secondAttribute="centerX" id="Dl9-ba-ZvL"/>
                                             <constraint firstItem="jOA-8i-reS" firstAttribute="height" secondItem="ZpQ-y5-VUE" secondAttribute="height" id="Dy5-XC-PMn"/>
                                             <constraint firstItem="jOA-8i-reS" firstAttribute="width" secondItem="ZpQ-y5-VUE" secondAttribute="width" id="PNh-iW-knH"/>
                                             <constraint firstItem="jOA-8i-reS" firstAttribute="top" secondItem="ZpQ-y5-VUE" secondAttribute="top" id="UDC-QW-UG0"/>
                                             <constraint firstAttribute="width" secondItem="ZpQ-y5-VUE" secondAttribute="height" multiplier="1:1" id="Y7m-kX-vuc"/>
+                                            <constraint firstItem="eJv-4e-vff" firstAttribute="centerY" secondItem="ZpQ-y5-VUE" secondAttribute="centerY" id="men-77-eCm"/>
                                             <constraint firstItem="jOA-8i-reS" firstAttribute="leading" secondItem="ZpQ-y5-VUE" secondAttribute="leading" id="tdE-zA-Mg5"/>
                                         </constraints>
                                     </view>
@@ -147,6 +183,17 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test_picture" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-ao-EJl">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQr-ut-p4D">
+                                                <rect key="frame" x="59" y="21" width="42" height="123"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addPictureToFirstSquare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DwW-VT-obS"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -163,12 +210,24 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Test_picture2" translatesAutoresizingMaskIntoConstraints="NO" id="fOA-7B-kkT">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i56-QQ-J6O">
+                                                <rect key="frame" x="59.666666666666657" y="19" width="42" height="123"/>
+                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addPictureToSecondSquare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vlq-Hu-1aH"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="fOA-7B-kkT" firstAttribute="width" secondItem="A3V-OR-1xp" secondAttribute="width" id="GUc-gS-N4J"/>
+                                            <constraint firstItem="i56-QQ-J6O" firstAttribute="centerX" secondItem="A3V-OR-1xp" secondAttribute="centerX" id="Igq-JD-1Ii"/>
                                             <constraint firstItem="fOA-7B-kkT" firstAttribute="leading" secondItem="A3V-OR-1xp" secondAttribute="leading" id="Iwi-HC-b7Q"/>
                                             <constraint firstAttribute="width" secondItem="A3V-OR-1xp" secondAttribute="height" multiplier="1:1" id="LDQ-Lv-mf3"/>
+                                            <constraint firstItem="i56-QQ-J6O" firstAttribute="centerY" secondItem="A3V-OR-1xp" secondAttribute="centerY" id="SaO-01-CJw"/>
                                             <constraint firstItem="fOA-7B-kkT" firstAttribute="height" secondItem="A3V-OR-1xp" secondAttribute="height" id="diF-qJ-y2D"/>
                                             <constraint firstItem="fOA-7B-kkT" firstAttribute="top" secondItem="A3V-OR-1xp" secondAttribute="top" id="gAO-Wu-vVZ"/>
                                         </constraints>
@@ -179,12 +238,24 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_picture3" translatesAutoresizingMaskIntoConstraints="NO" id="jff-Cb-H0q">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="167.33333333333334"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buN-ea-oQN">
+                                                <rect key="frame" x="146.66666666666666" y="22" width="42" height="123"/>
+                                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addPictureToSecondRectangle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dCh-7e-tzL"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="buN-ea-oQN" firstAttribute="centerY" secondItem="Yzd-83-k3S" secondAttribute="centerY" id="5oR-FH-ESM"/>
                                             <constraint firstAttribute="width" secondItem="Yzd-83-k3S" secondAttribute="height" multiplier="16:8" id="MKB-qe-6J9"/>
                                             <constraint firstItem="jff-Cb-H0q" firstAttribute="width" secondItem="Yzd-83-k3S" secondAttribute="width" id="SNt-6W-cH5"/>
                                             <constraint firstItem="jff-Cb-H0q" firstAttribute="height" secondItem="Yzd-83-k3S" secondAttribute="height" id="a8o-QY-8vJ"/>
+                                            <constraint firstItem="buN-ea-oQN" firstAttribute="centerX" secondItem="Yzd-83-k3S" secondAttribute="centerX" id="afS-dL-C54"/>
                                             <constraint firstItem="jff-Cb-H0q" firstAttribute="leading" secondItem="Yzd-83-k3S" secondAttribute="leading" id="dgg-rQ-nSe"/>
                                             <constraint firstItem="jff-Cb-H0q" firstAttribute="top" secondItem="Yzd-83-k3S" secondAttribute="top" id="mNk-4E-6hY"/>
                                         </constraints>
@@ -223,7 +294,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="5" verticalCompressionResistancePriority="5" text="^" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVw-ol-HWD">
-                                        <rect key="frame" x="135" y="8" width="10" height="24"/>
+                                        <rect key="frame" x="135" y="1" width="10" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -238,7 +309,7 @@
                                     <constraint firstAttribute="width" constant="280" id="ISD-sE-Mwa">
                                         <variation key="heightClass=compact" constant="150"/>
                                     </constraint>
-                                    <constraint firstItem="LVw-ol-HWD" firstAttribute="top" secondItem="pR5-3E-swT" secondAttribute="top" constant="8" id="NKk-Ce-7AX"/>
+                                    <constraint firstItem="LVw-ol-HWD" firstAttribute="top" secondItem="pR5-3E-swT" secondAttribute="top" constant="1" id="NKk-Ce-7AX"/>
                                     <constraint firstItem="umQ-bj-GKq" firstAttribute="centerY" secondItem="pR5-3E-swT" secondAttribute="centerY" id="abU-VK-7P0"/>
                                     <constraint firstItem="LVw-ol-HWD" firstAttribute="centerX" secondItem="pR5-3E-swT" secondAttribute="centerX" id="vJv-Ry-ov7"/>
                                 </constraints>
@@ -356,7 +427,6 @@
                                 <exclude reference="pd8-RF-uRG"/>
                                 <exclude reference="u9q-7H-j7N"/>
                                 <exclude reference="FFG-Tq-jKi"/>
-                                <exclude reference="F8o-jY-4PQ"/>
                                 <exclude reference="9sq-sS-5PR"/>
                                 <exclude reference="O1X-8u-yFB"/>
                                 <exclude reference="V3f-6u-gdd"/>
@@ -364,6 +434,7 @@
                                 <exclude reference="nIk-Vi-Bp5"/>
                                 <exclude reference="sEf-8U-MBt"/>
                                 <exclude reference="vPK-tt-R40"/>
+                                <exclude reference="F8o-jY-4PQ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -406,14 +477,14 @@
                                 <exclude reference="cnu-x3-gma"/>
                                 <include reference="FFG-Tq-jKi"/>
                                 <exclude reference="enN-X8-vV6"/>
-                                <include reference="F8o-jY-4PQ"/>
-                                <exclude reference="h4l-10-4Ap"/>
                                 <exclude reference="9sq-sS-5PR"/>
                                 <exclude reference="O1X-8u-yFB"/>
                                 <exclude reference="V3f-6u-gdd"/>
                                 <include reference="nIk-Vi-Bp5"/>
                                 <exclude reference="sEf-8U-MBt"/>
                                 <exclude reference="vPK-tt-R40"/>
+                                <include reference="F8o-jY-4PQ"/>
+                                <exclude reference="h4l-10-4Ap"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -428,15 +499,23 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="arrowLabel" destination="LVw-ol-HWD" id="mhC-hh-exx"/>
+                        <outlet property="firstRectangleImage" destination="twb-BT-nQe" id="A4S-eP-oW2"/>
                         <outlet property="firstRectangleView" destination="Aug-45-hb7" id="kPw-Az-Rfh"/>
+                        <outlet property="firstSquareImage" destination="bqm-ao-EJl" id="UWE-Vs-2Kc"/>
                         <outlet property="firstSquareView" destination="3Ga-l9-tBR" id="lJ8-ih-WgP"/>
+                        <outlet property="fourthSquareImage" destination="JEh-Yg-MYg" id="3d8-mF-YMF"/>
                         <outlet property="fourthSquareView" destination="ebT-aK-j8I" id="A7Y-RJ-KJz"/>
                         <outlet property="myView" destination="Q5N-I0-m2J" id="8Tr-WW-DFD"/>
+                        <outlet property="secondRectangleImage" destination="jff-Cb-H0q" id="JIu-E4-7hJ"/>
                         <outlet property="secondRectangleView" destination="Yzd-83-k3S" id="FDd-vV-OeH"/>
+                        <outlet property="secondSquareImage" destination="fOA-7B-kkT" id="ALN-z8-UZz"/>
                         <outlet property="secondSquareView" destination="A3V-OR-1xp" id="Ffy-GL-iQO"/>
                         <outlet property="selectedSquareFirst" destination="Atn-fY-Ppm" id="1P8-9S-G2p"/>
                         <outlet property="selectedSquareSecond" destination="W3g-yH-Pd5" id="yDN-sD-hap"/>
                         <outlet property="selectedSquareThird" destination="2Ax-Op-2V0" id="YZN-Kw-Wd3"/>
+                        <outlet property="swipeLabel" destination="umQ-bj-GKq" id="2kH-Gg-c05"/>
+                        <outlet property="thirdSquareImage" destination="jOA-8i-reS" id="efC-27-Xjj"/>
                         <outlet property="thirdSquareView" destination="ZpQ-y5-VUE" id="gMS-rx-BpD"/>
                     </connections>
                 </viewController>
