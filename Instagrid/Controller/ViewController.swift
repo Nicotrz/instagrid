@@ -87,9 +87,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillTransition(to: size, with: coordinator)
         let translationTransform : CGAffineTransform
         if UIDevice.current.orientation.isLandscape {
-            swipeLabel.text = "Swipe right to share"
-            arrowLabel.text = ">"
-            translationTransform = CGAffineTransform(translationX: 20, y: 0 )
+            swipeLabel.text = "Swipe left to share"
+            arrowLabel.text = "<"
+            translationTransform = CGAffineTransform(translationX: -20, y: 0 )
         } else {
             swipeLabel.text = "Swipe up to share"
             arrowLabel.text = "^"
@@ -201,7 +201,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func shareGestureRight(_ sender: Any) {
         if UIDevice.current.orientation.isLandscape {
             let screenWidth = UIScreen.main.bounds.width
-            let translationTransform = CGAffineTransform(translationX: screenWidth, y: 0)
+            let translationTransform = CGAffineTransform(translationX: -screenWidth, y: 0)
             handleShare(withAnimation: translationTransform)
         }
     }
