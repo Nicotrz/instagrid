@@ -8,6 +8,18 @@
 
 import UIKit
 
+extension UIView {
+    
+    // Using a function since `var image` might conflict with an existing variable
+    // (like on `UIImageView`)
+    func asImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(bounds: bounds)
+        return renderer.image { rendererContext in
+            layer.render(in: rendererContext.cgContext)
+        }
+    }
+}
+
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 
@@ -23,6 +35,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     var pickerChoose: PickerChoose = .firstSquare
     
     @IBOutlet weak var myView: PictureView!
+    
+    @IBOutlet weak var swipeLabelView: UIView!
+    
     
     @IBOutlet weak var firstRectangleView: UIView!
     @IBOutlet weak var firstRectangleImage: UIImageView!
@@ -59,17 +74,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird)
+        let translationTransform = CGAffineTransform(translationX: 0, y: -20 )
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+            
+            self.arrowLabel.transform = translationTransform
+            
+        }, completion: nil)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        arrowLabel.transform = .identity
         super.viewWillTransition(to: size, with: coordinator)
+        let translationTransform : CGAffineTransform
         if UIDevice.current.orientation.isLandscape {
             swipeLabel.text = "Swipe right to share"
             arrowLabel.text = ">"
+            translationTransform = CGAffineTransform(translationX: 20, y: 0 )
         } else {
             swipeLabel.text = "Swipe up to share"
             arrowLabel.text = "^"
+            translationTransform = CGAffineTransform(translationX: 0, y: -20 )
         }
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+            
+            self.arrowLabel.transform = translationTransform
+            
+        }, completion: nil)
     }
     
 
@@ -104,6 +134,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
+        picker.modalPresentationStyle = .overCurrentContext
         present(picker, animated: true)
     }
     
@@ -159,6 +190,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         myView.state = .thirdDisplay
     }
     
+    @IBAction func shareGesture(_ sender: Any) {
+        if UIDevice.current.orientation.isPortrait {
+        let screenHeight = UIScreen.main.bounds.height
+        let translationTransform = CGAffineTransform(translationX: 0, y: -screenHeight)
+            handleShare(withAnimation: translationTransform)
+        }
+    }
     
+    @IBAction func shareGestureRight(_ sender: Any) {
+        if UIDevice.current.orientation.isLandscape {
+            let screenWidth = UIScreen.main.bounds.width
+            let translationTransform = CGAffineTransform(translationX: screenWidth, y: 0)
+            handleShare(withAnimation: translationTransform)
+        }
+    }
+    
+    func handleShare(withAnimation animation: CGAffineTransform) {
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.myView.transform = animation
+            self.swipeLabelView.transform = animation
+        })
+        
+        let shareContent = myView.asImage()
+        let activityViewController = UIActivityViewController(activityItems: [shareContent as UIImage], applicationActivities: nil)
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.myView.transform = .identity
+                self.swipeLabelView.transform = .identity
+            })
+            
+        }
+        present(activityViewController, animated: true, completion: { })
+
+    }
 }
 
