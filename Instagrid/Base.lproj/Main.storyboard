@@ -592,7 +592,7 @@
                         <action selector="shareGesture:" destination="BYZ-38-t0r" id="C0z-wR-k7i"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="right" id="2mV-1L-elI">
+                <swipeGestureRecognizer direction="left" id="2mV-1L-elI">
                     <connections>
                         <action selector="shareGestureRight:" destination="BYZ-38-t0r" id="sch-rv-aCO"/>
                     </connections>

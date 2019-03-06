@@ -46,5 +46,11 @@
 		<string>Delm-Medium.otf</string>
 		<string>ThirstySoftRegular.otf</string>
 	</array>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Your access is needed to save the picture</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your access is needed to save the picture</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Your access is needed to save the picture</string>
 </dict>
 </plist>

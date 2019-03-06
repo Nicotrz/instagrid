@@ -84,7 +84,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         arrowLabel.transform = .identity
-        super.viewWillTransition(to: size, with: coordinator)
         let translationTransform : CGAffineTransform
         if UIDevice.current.orientation.isLandscape {
             swipeLabel.text = "Swipe left to share"
@@ -100,6 +99,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.arrowLabel.transform = translationTransform
             
         }, completion: nil)
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
 
