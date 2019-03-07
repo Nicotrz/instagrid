@@ -74,14 +74,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
         let translationTransform = CGAffineTransform(translationX: 0, y: -20 )
         UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
             
             self.arrowLabel.transform = translationTransform
             
         }, completion: nil)
+        super.viewDidAppear(animated)
     }
-
+    
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         arrowLabel.transform = .identity
         let translationTransform : CGAffineTransform
