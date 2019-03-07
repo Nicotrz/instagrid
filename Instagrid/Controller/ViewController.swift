@@ -144,19 +144,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
-    
     
     @IBAction func switchToFirstDisplay(_ sender: Any) {
-        myView.state = .firstDisplay
+        myView.switchDisplay(state: .firstDisplay)
     }
     
     @IBAction func switchToSecondDisplay(_ sender: Any) {
-        myView.state = .secondDisplay
+        myView.switchDisplay(state: .secondDisplay)
     }
     
     @IBAction func switchToThirdDisplay(_ sender: Any) {
-        myView.state = .thirdDisplay
+        myView.switchDisplay(state: .thirdDisplay)
     }
     
     @IBAction func shareGesture(_ sender: Any) {

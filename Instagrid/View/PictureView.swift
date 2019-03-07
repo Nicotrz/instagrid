@@ -23,32 +23,19 @@ class PictureView: UIView {
         case left
     }
 
-    var firstSquareView = UIView()
-    var secondSquareView =  UIView()
-    var thirdSquareView = UIView()
-    var fourthSquareView = UIView()
-    var firstRectangleView = UIView()
-    var secondRectangleView = UIView()
-    var selectedSquareFirst = UIImageView()
-    var selectedSquareSecond = UIImageView()
-    var selectedSquareThird = UIImageView()
+    private var firstSquareView = UIView()
+    private var secondSquareView =  UIView()
+    private var thirdSquareView = UIView()
+    private var fourthSquareView = UIView()
+    private var firstRectangleView = UIView()
+    private var secondRectangleView = UIView()
+    private var selectedSquareFirst = UIImageView()
+    private var selectedSquareSecond = UIImageView()
+    private var selectedSquareThird = UIImageView()
     
-    var arrowLabel = UILabel()
-    var swipeLabel = UILabel()
+    private var arrowLabel = UILabel()
+    private var swipeLabel = UILabel()
     
-    
-    var state: State = .secondDisplay {
-        didSet {
-            switch state {
-            case .firstDisplay:
-                changeStateView(hideFirstSelected: false, hideSecondSelected: true, hideThirdSelected: true, hideFirstSquare: true, hideSecondSquare: true, hideThirdSquare: false, hideFourthSquare: false, hideFirstRectangle: false, hideSecondRectangle: true)
-            case .secondDisplay:
-                changeStateView(hideFirstSelected: true, hideSecondSelected: false, hideThirdSelected: true, hideFirstSquare: false, hideSecondSquare: false, hideThirdSquare: true, hideFourthSquare: true, hideFirstRectangle: true, hideSecondRectangle: false)
-            case .thirdDisplay:
-                changeStateView(hideFirstSelected: true, hideSecondSelected: true, hideThirdSelected: false, hideFirstSquare: false, hideSecondSquare: false, hideThirdSquare: false, hideFourthSquare: false, hideFirstRectangle: true, hideSecondRectangle: true)
-            }
-        }
-    }
     
     var arrowDirrection: ArrowDirrection = .down {
         didSet {
@@ -66,6 +53,17 @@ class PictureView: UIView {
         }
     }
     
+    func switchDisplay(state: State ) {
+        switch state {
+        case .firstDisplay:
+            changeStateView(hideFirstSelected: false, hideSecondSelected: true, hideThirdSelected: true, hideFirstSquare: true, hideSecondSquare: true, hideThirdSquare: false, hideFourthSquare: false, hideFirstRectangle: false, hideSecondRectangle: true)
+        case .secondDisplay:
+            changeStateView(hideFirstSelected: true, hideSecondSelected: false, hideThirdSelected: true, hideFirstSquare: false, hideSecondSquare: false, hideThirdSquare: true, hideFourthSquare: true, hideFirstRectangle: true, hideSecondRectangle: false)
+        case .thirdDisplay:
+            changeStateView(hideFirstSelected: true, hideSecondSelected: true, hideThirdSelected: false, hideFirstSquare: false, hideSecondSquare: false, hideThirdSquare: false, hideFourthSquare: false, hideFirstRectangle: true, hideSecondRectangle: true)
+        }
+    }
+    
     func animateTheArrowWhitoutDirection() {
         if UIDevice.current.orientation.isPortrait {
             animateTheArrow(arrowDirrection: .down)
@@ -74,7 +72,7 @@ class PictureView: UIView {
         }
     }
     
-    func animateTheArrow(arrowDirrection: ArrowDirrection) {
+    private func animateTheArrow(arrowDirrection: ArrowDirrection) {
         let translationTransform: CGAffineTransform
         switch arrowDirrection {
         case .down:
@@ -105,7 +103,7 @@ class PictureView: UIView {
     }
     
     
-    func changeStateView(hideFirstSelected: Bool, hideSecondSelected:Bool, hideThirdSelected: Bool, hideFirstSquare: Bool, hideSecondSquare: Bool, hideThirdSquare: Bool, hideFourthSquare: Bool, hideFirstRectangle: Bool, hideSecondRectangle: Bool ) {
+    private func changeStateView(hideFirstSelected: Bool, hideSecondSelected:Bool, hideThirdSelected: Bool, hideFirstSquare: Bool, hideSecondSquare: Bool, hideThirdSquare: Bool, hideFourthSquare: Bool, hideFirstRectangle: Bool, hideSecondRectangle: Bool ) {
         selectedSquareFirst.isHidden = hideFirstSelected
         selectedSquareSecond.isHidden = hideSecondSelected
         selectedSquareThird.isHidden = hideThirdSelected
