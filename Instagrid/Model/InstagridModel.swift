@@ -9,16 +9,7 @@
 import UIKit
 
 class InstagridModel {
-    
-    enum State
-    {
-        case firstDisplay
-        case secondDisplay
-        case thirdDisplay
-    }
-
-    var state: State = .secondDisplay
-    
+        
     func asImage(ofView myView: UIView) -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: myView.bounds)
         return renderer.image { rendererContext in

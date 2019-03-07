@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -104,6 +105,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         callPicker(withPicker: .fourthSquare)
     }
     
+    @IBAction func randomizePictures(_ sender: Any) {
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
+                                                         ascending: false)]
+        fetchOptions.predicate = NSPredicate(format: "mediaType == %d || mediaType == %d",
+                                             PHAssetMediaType.image.rawValue,
+                                             PHAssetMediaType.video.rawValue)
+        let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+
+        print (allPhotos.count)
+       // let random = Int.random(in: 1...allPhotos.count)
+        let random = Int.random(in: 0...allPhotos.count-1)
+        firstRectangleImage.isHidden = false
+        firstRectangleImage.image = getAssetThumbnail(asset: allPhotos[random])
+    }
+
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        var retimage = UIImage()
+        let manager = PHImageManager.default()
+        manager.requestImage(for: asset, targetSize: CGSize(width: 500.0, height: 500.0), contentMode: .aspectFill, options: nil, resultHandler: {(result, info)->Void in
+            retimage = result!
+        })
+        return retimage
+    }
     
     func callPicker(withPicker picker: PickerChoose) {
         pickerChoose = picker

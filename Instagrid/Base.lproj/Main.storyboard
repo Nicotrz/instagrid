@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="landscape">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,11 +23,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Instagrid" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="812" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wA-SW-XlO">
-                                <rect key="frame" x="668" y="57.666666666666657" width="80" height="80"/>
+                                <rect key="frame" x="62.666666666666629" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Xne-6N-KfD"/>
                                     <constraint firstAttribute="height" constant="80" id="mSA-M2-hmq"/>
@@ -38,7 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAW-qs-CLq">
-                                <rect key="frame" x="668" y="147.66666666666666" width="80" height="80"/>
+                                <rect key="frame" x="147.66666666666663" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="J6B-1N-PLG"/>
                                     <constraint firstAttribute="width" constant="80" id="TjU-99-CIB"/>
@@ -49,7 +49,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tme-UH-OGS">
-                                <rect key="frame" x="668" y="237.66666666666663" width="80" height="80"/>
+                                <rect key="frame" x="232.66666666666663" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="77a-a7-ETf"/>
                                     <constraint firstAttribute="width" constant="80" id="JTQ-Qq-p7l"/>
@@ -60,7 +60,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Myh-Ff-Wkp">
-                                <rect key="frame" x="346" y="10" width="120" height="40"/>
+                                <rect key="frame" x="127.66666666666669" y="54" width="120" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="LPv-dg-qJw"/>
                                     <constraint firstAttribute="height" constant="40" id="nFo-Xc-eso"/>
@@ -70,41 +70,41 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="Atn-fY-Ppm">
-                                <rect key="frame" x="668" y="57.666666666666657" width="80" height="80"/>
+                                <rect key="frame" x="62.666666666666629" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="WcR-4g-BZq"/>
                                     <constraint firstAttribute="width" constant="80" id="yA6-3q-Av1"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-yH-Pd5">
-                                <rect key="frame" x="668" y="147.66666666666666" width="80" height="80"/>
+                                <rect key="frame" x="147.66666666666663" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="LGU-gD-CWq"/>
                                     <constraint firstAttribute="width" constant="80" id="k5Y-v6-n3F"/>
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="2Ax-Op-2V0">
-                                <rect key="frame" x="668" y="237.66666666666663" width="80" height="80"/>
+                                <rect key="frame" x="232.66666666666663" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="w2n-09-vyT"/>
                                     <constraint firstAttribute="width" constant="80" id="zOR-ao-KAJ"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5N-I0-m2J" customClass="PictureView" customModule="Instagrid" customModuleProvider="target">
-                                <rect key="frame" x="264" y="60" width="284" height="284"/>
+                                <rect key="frame" x="10" y="179" width="355" height="355"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aug-45-hb7">
-                                        <rect key="frame" x="10" y="10" width="264" height="132"/>
+                                        <rect key="frame" x="10" y="10" width="335" height="167.66666666666666"/>
                                         <subviews>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="twb-BT-nQe">
-                                                <rect key="frame" x="0.0" y="0.0" width="264" height="132"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="167.66666666666666"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="uG8-HO-szC" appends="YES" id="brJ-4a-3nW"/>
                                                 </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0N-Xw-bZq">
-                                                <rect key="frame" x="111" y="4.6666666666666714" width="42" height="123"/>
+                                                <rect key="frame" x="146.66666666666666" y="22.333333333333343" width="42" height="123"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -126,17 +126,17 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebT-aK-j8I">
-                                        <rect key="frame" x="145.33333333333331" y="145.33333333333337" width="128.66666666666669" height="128.66666666666663"/>
+                                        <rect key="frame" x="184" y="184" width="161" height="161"/>
                                         <subviews>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JEh-Yg-MYg">
-                                                <rect key="frame" x="0.0" y="0.0" width="128.66666666666666" height="128.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="LxF-gD-Q06" appends="YES" id="syS-LG-mW0"/>
                                                 </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AK-so-HE0">
-                                                <rect key="frame" x="43.333333333333371" y="2.6666666666666572" width="42" height="123"/>
+                                                <rect key="frame" x="59.666666666666657" y="19" width="42" height="123"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -158,17 +158,17 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZpQ-y5-VUE">
-                                        <rect key="frame" x="10" y="145.33333333333337" width="128.66666666666666" height="128.66666666666663"/>
+                                        <rect key="frame" x="10" y="184" width="161" height="161"/>
                                         <subviews>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOA-8i-reS">
-                                                <rect key="frame" x="0.0" y="0.0" width="128.66666666666666" height="128.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="zT3-Sz-WNk" appends="YES" id="daj-5h-1je"/>
                                                 </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJv-4e-vff">
-                                                <rect key="frame" x="43.333333333333314" y="2.6666666666666572" width="42" height="123"/>
+                                                <rect key="frame" x="59.666666666666671" y="19" width="42" height="123"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -190,17 +190,17 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ga-l9-tBR">
-                                        <rect key="frame" x="10" y="10" width="128.66666666666666" height="128.66666666666666"/>
+                                        <rect key="frame" x="10" y="10" width="161" height="161"/>
                                         <subviews>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-ao-EJl">
-                                                <rect key="frame" x="0.0" y="0.0" width="128.66666666666666" height="128.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="xRv-GO-tXK" appends="YES" id="yZX-VW-ihM"/>
                                                 </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQr-ut-p4D">
-                                                <rect key="frame" x="43.333333333333314" y="3" width="42" height="123"/>
+                                                <rect key="frame" x="59.666666666666671" y="19" width="42" height="123"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -222,17 +222,17 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3V-OR-1xp">
-                                        <rect key="frame" x="145.33333333333331" y="10" width="128.66666666666669" height="128.66666666666666"/>
+                                        <rect key="frame" x="184" y="10" width="161" height="161"/>
                                         <subviews>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOA-7B-kkT">
-                                                <rect key="frame" x="0.0" y="0.0" width="128.66666666666666" height="128.66666666666666"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="cx5-jf-aY9" appends="YES" id="Bb9-Ze-oCf"/>
                                                 </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i56-QQ-J6O">
-                                                <rect key="frame" x="43.333333333333371" y="3" width="42" height="123"/>
+                                                <rect key="frame" x="59.666666666666657" y="19" width="42" height="123"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -254,17 +254,17 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzd-83-k3S">
-                                        <rect key="frame" x="10" y="142" width="264" height="132"/>
+                                        <rect key="frame" x="10" y="177.66666666666669" width="335" height="167.33333333333331"/>
                                         <subviews>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jff-Cb-H0q">
-                                                <rect key="frame" x="0.0" y="0.0" width="264" height="132"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="167.33333333333334"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="VqX-1j-ttO" appends="YES" id="qFe-az-Fvh"/>
                                                 </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buN-ea-oQN">
-                                                <rect key="frame" x="111" y="4.6666666666666572" width="42" height="123"/>
+                                                <rect key="frame" x="146.66666666666666" y="22" width="42" height="123"/>
                                                 <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="100"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" red="0.3690761924" green="0.56107968090000004" blue="0.70590263610000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -310,16 +310,16 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pR5-3E-swT">
-                                <rect key="frame" x="54" y="152.66666666666666" width="205" height="70"/>
+                                <rect key="frame" x="47.666666666666657" y="104" width="280" height="70"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="umQ-bj-GKq">
-                                        <rect key="frame" x="1" y="21" width="203" height="28"/>
+                                        <rect key="frame" x="63" y="21" width="154" height="28"/>
                                         <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="5" verticalCompressionResistancePriority="5" text="^" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVw-ol-HWD">
-                                        <rect key="frame" x="97.666666666666657" y="1" width="10" height="24"/>
+                                        <rect key="frame" x="135" y="1" width="10" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -354,6 +354,17 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epK-Ff-vQ5">
+                                <rect key="frame" x="10" y="129" width="50" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PdA-C5-Dp2"/>
+                                    <constraint firstAttribute="width" constant="50" id="QCf-Qc-sD1"/>
+                                </constraints>
+                                <state key="normal" image="2000px-Gnome-media-playlist-shuffle.svg"/>
+                                <connections>
+                                    <action selector="randomizePictures:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LOB-am-7it"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.69576424360275269" green="0.81438153982162476" blue="0.87059855461120605" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
@@ -361,6 +372,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Q5N-I0-m2J" secondAttribute="trailing" constant="10" id="2v1-hS-fwl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Atn-fY-Ppm" secondAttribute="trailing" constant="20" id="3LP-W6-Tn5"/>
                             <constraint firstItem="Q5N-I0-m2J" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="3uv-9h-fnV"/>
+                            <constraint firstItem="Q5N-I0-m2J" firstAttribute="top" secondItem="epK-Ff-vQ5" secondAttribute="bottom" constant="10" id="5Ts-Vw-x8c"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W3g-yH-Pd5" secondAttribute="trailing" constant="20" id="6Lg-nr-YR4"/>
                             <constraint firstItem="W3g-yH-Pd5" firstAttribute="leading" secondItem="2wA-SW-XlO" secondAttribute="trailing" constant="5" id="8nv-Vw-bvi"/>
                             <constraint firstItem="2Ax-Op-2V0" firstAttribute="top" secondItem="Atn-fY-Ppm" secondAttribute="bottom" constant="10" id="9sq-sS-5PR"/>
@@ -386,6 +398,7 @@
                             <constraint firstItem="2Ax-Op-2V0" firstAttribute="top" secondItem="Atn-fY-Ppm" secondAttribute="bottom" constant="10" id="V3f-6u-gdd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W3g-yH-Pd5" secondAttribute="trailing" constant="20" id="Wgc-hq-73K"/>
                             <constraint firstItem="2Ax-Op-2V0" firstAttribute="leading" secondItem="W3g-yH-Pd5" secondAttribute="trailing" constant="5" id="Wjm-nB-TCE"/>
+                            <constraint firstItem="epK-Ff-vQ5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="X3R-E6-M0S"/>
                             <constraint firstItem="Q5N-I0-m2J" firstAttribute="leading" secondItem="pR5-3E-swT" secondAttribute="trailing" constant="5" id="YF6-8P-k6E"/>
                             <constraint firstItem="pR5-3E-swT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="YT5-xE-s3H">
                                 <variation key="heightClass=compact" constant="10"/>
@@ -602,6 +615,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="2000px-Gnome-media-playlist-shuffle.svg" width="2000" height="1647"/>
         <image name="Layout 1" width="80" height="80"/>
         <image name="Layout 2" width="80" height="80"/>
         <image name="Layout 3" width="80" height="80"/>
