@@ -16,6 +16,12 @@ class PictureView: UIView {
         case secondDisplay
         case thirdDisplay
     }
+    
+    enum ArrowDirrection
+    {
+        case down
+        case left
+    }
 
     var firstSquareView = UIView()
     var secondSquareView =  UIView()
@@ -26,6 +32,9 @@ class PictureView: UIView {
     var selectedSquareFirst = UIImageView()
     var selectedSquareSecond = UIImageView()
     var selectedSquareThird = UIImageView()
+    
+    var arrowLabel = UILabel()
+    var swipeLabel = UILabel()
     
     
     var state: State = .secondDisplay {
@@ -41,7 +50,46 @@ class PictureView: UIView {
         }
     }
     
-    func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView) {
+    var arrowDirrection: ArrowDirrection = .down {
+        didSet {
+            arrowLabel.transform = .identity
+            switch arrowDirrection {
+            case .down:
+                animateTheArrow(arrowDirrection: .down)
+                swipeLabel.text = "Swipe up to share"
+                arrowLabel.text = "^"
+            case .left:
+                animateTheArrow(arrowDirrection: .left)
+                swipeLabel.text = "Swipe left to share"
+                arrowLabel.text = "<"
+            }
+        }
+    }
+    
+    func animateTheArrowWhitoutDirection() {
+        if UIDevice.current.orientation.isPortrait {
+            animateTheArrow(arrowDirrection: .down)
+        } else {
+            animateTheArrow(arrowDirrection: .left)
+        }
+    }
+    
+    func animateTheArrow(arrowDirrection: ArrowDirrection) {
+        let translationTransform: CGAffineTransform
+        switch arrowDirrection {
+        case .down:
+            translationTransform = CGAffineTransform(translationX: 0, y: -20 )
+        case .left:
+            translationTransform = CGAffineTransform(translationX: 20, y: 0 )
+        }
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+            
+            self.arrowLabel.transform = translationTransform
+            
+        }, completion: nil)
+    }
+    
+    func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView, arrowLabel: UILabel, swipeLabel: UILabel) {
         self.firstSquareView = firstSquareView
         self.secondSquareView = secondSquareView
         self.thirdSquareView = thirdSquareView
@@ -51,6 +99,9 @@ class PictureView: UIView {
         self.selectedSquareFirst = selectedSquareFirst
         self.selectedSquareSecond = selectedSquareSecond
         self.selectedSquareThird = selectedSquareThird
+        self.arrowLabel = arrowLabel
+        self.swipeLabel = swipeLabel
+        self.arrowDirrection = .down
     }
     
     
@@ -65,4 +116,12 @@ class PictureView: UIView {
         firstRectangleView.isHidden = hideFirstRectangle
         secondRectangleView.isHidden = hideSecondRectangle
     }
+
+    func setImage (ofView imageView: UIImageView, image: UIImage, withPlusLabel label: UIButton ) {
+        imageView.image = image
+        imageView.isHidden = false
+        label.isHidden = true
+        imageView.isUserInteractionEnabled = true
+    }
+
 }

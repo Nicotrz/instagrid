@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		066C1E0E22254BB800EF6FF7 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06032FF72223FD1C00B0A90E /* Delm-Medium.otf */; };
 		066C1E0F22254BBB00EF6FF7 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 06032FF62223FD1C00B0A90E /* ThirstySoftRegular.otf */; };
+		066FA98022313AF500B96C69 /* InstagridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066FA97F22313AF500B96C69 /* InstagridModel.swift */; };
 		067AF8362223E7D100D9C523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067AF8352223E7D100D9C523 /* AppDelegate.swift */; };
 		067AF8382223E7D100D9C523 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067AF8372223E7D100D9C523 /* ViewController.swift */; };
 		067AF83B2223E7D100D9C523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 067AF8392223E7D100D9C523 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		06032FF62223FD1C00B0A90E /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		06032FF72223FD1C00B0A90E /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
+		066FA97F22313AF500B96C69 /* InstagridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagridModel.swift; sourceTree = "<group>"; };
 		067AF8322223E7D100D9C523 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		067AF8352223E7D100D9C523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		067AF8372223E7D100D9C523 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 		06032FF82223FD2500B0A90E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				066FA97F22313AF500B96C69 /* InstagridModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06E832582229BD0000D25D16 /* PictureView.swift in Sources */,
+				066FA98022313AF500B96C69 /* InstagridModel.swift in Sources */,
 				067AF8382223E7D100D9C523 /* ViewController.swift in Sources */,
 				067AF8362223E7D100D9C523 /* AppDelegate.swift in Sources */,
 			);

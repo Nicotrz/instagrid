@@ -8,18 +8,6 @@
 
 import UIKit
 
-extension UIView {
-    
-    // Using a function since `var image` might conflict with an existing variable
-    // (like on `UIImageView`)
-    func asImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
-        }
-    }
-}
-
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 
@@ -31,6 +19,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         case firstRectangle
         case secondRectangle
     }
+    
+    enum Direction {
+        case up
+        case left
+    }
+    
+    let modelManager = InstagridModel()
     
     var pickerChoose: PickerChoose = .firstSquare
     
@@ -73,41 +68,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird)
+        myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird, arrowLabel: arrowLabel, swipeLabel: swipeLabel)
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        let translationTransform = CGAffineTransform(translationX: 0, y: -20 )
-        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
-            
-            self.arrowLabel.transform = translationTransform
-            
-        }, completion: nil)
-        super.viewDidAppear(animated)
-    }
-    
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        arrowLabel.transform = .identity
-        let translationTransform : CGAffineTransform
         if UIDevice.current.orientation.isLandscape {
-            swipeLabel.text = "Swipe left to share"
-            arrowLabel.text = "<"
-            translationTransform = CGAffineTransform(translationX: -20, y: 0 )
+            myView.arrowDirrection = .left
         } else {
-            swipeLabel.text = "Swipe up to share"
-            arrowLabel.text = "^"
-            translationTransform = CGAffineTransform(translationX: 0, y: -20 )
+            myView.arrowDirrection = .down
         }
-        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
-            
-            self.arrowLabel.transform = translationTransform
-            
-        }, completion: nil)
         super.viewWillTransition(to: size, with: coordinator)
     }
-    
-
 
     @IBAction func addPictureToFirstRectangle(_ sender: Any) {
         callPicker(withPicker: .firstRectangle)
@@ -153,27 +124,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Set photoImageView to display the selected image.
         switch pickerChoose {
         case .firstRectangle:
-            setImage(ofView: firstRectangleImage, image: selectedImage, withPlusLabel: firstRectanglePlusLabel)
+            myView.setImage(ofView: firstRectangleImage, image: selectedImage, withPlusLabel: firstRectanglePlusLabel)
         case .secondRectangle:
-            setImage(ofView: secondRectangleImage, image: selectedImage, withPlusLabel: secondRectanglePlusLabel)
+            myView.setImage(ofView: secondRectangleImage, image: selectedImage, withPlusLabel: secondRectanglePlusLabel)
         case .firstSquare:
-            setImage(ofView: firstSquareImage, image: selectedImage, withPlusLabel: firstSquarePlusLabel)
+            myView.setImage(ofView: firstSquareImage, image: selectedImage, withPlusLabel: firstSquarePlusLabel)
         case .secondSquare:
-            setImage(ofView: secondSquareImage, image: selectedImage, withPlusLabel: secondSquarePlusLabel)
+            myView.setImage(ofView: secondSquareImage, image: selectedImage, withPlusLabel: secondSquarePlusLabel)
         case .thirdSquare:
-            setImage(ofView: thirdSquareImage, image: selectedImage, withPlusLabel: thirdSquarePlusLabel)
+            myView.setImage(ofView: thirdSquareImage, image: selectedImage, withPlusLabel: thirdSquarePlusLabel)
         case .fourthSquare:
-            setImage(ofView: fourthSquareImage, image: selectedImage, withPlusLabel: fourthSquarePlusLabel)
+            myView.setImage(ofView: fourthSquareImage, image: selectedImage, withPlusLabel: fourthSquarePlusLabel)
         }
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
-    }
-    
-    func setImage (ofView imageView: UIImageView, image: UIImage, withPlusLabel label: UIButton ) {
-        imageView.image = image
-        imageView.isHidden = false
-        label.isHidden = true
-        imageView.isUserInteractionEnabled = true
     }
 
     //handle the cancel
@@ -197,38 +161,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func shareGesture(_ sender: Any) {
         if UIDevice.current.orientation.isPortrait {
-        let screenHeight = UIScreen.main.bounds.height
-        let translationTransform = CGAffineTransform(translationX: 0, y: -screenHeight)
-            handleShare(withAnimation: translationTransform)
+            handleShare(withDirection: .up)
         }
     }
     
     @IBAction func shareGestureRight(_ sender: Any) {
         if UIDevice.current.orientation.isLandscape {
-            let screenWidth = UIScreen.main.bounds.width
-            let translationTransform = CGAffineTransform(translationX: -screenWidth, y: 0)
-            handleShare(withAnimation: translationTransform)
+            handleShare(withDirection: .left)
         }
     }
     
-    func handleShare(withAnimation animation: CGAffineTransform) {
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.myView.transform = animation
-            self.swipeLabelView.transform = animation
-        })
-        
-        let shareContent = myView.asImage()
+    func handleShare(withDirection direction: Direction) {
+        var x: CGFloat
+        var y: CGFloat
+        switch direction {
+        case .up:
+            x = 0
+            y = -UIScreen.main.bounds.height
+        case .left:
+            x = -UIScreen.main.bounds.width
+            y = 0
+        }
+        let translationTransform = CGAffineTransform(translationX: x, y: y)
+        self.animate(transformation: translationTransform)
+        let shareContent = modelManager.asImage(ofView: myView)
         let activityViewController = UIActivityViewController(activityItems: [shareContent as UIImage], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            UIView.animate(withDuration: 0.3, animations: {
-                self.myView.transform = .identity
-                self.swipeLabelView.transform = .identity
-            })
-            
+            self.animate(transformation: .identity )
+            self.myView.animateTheArrowWhitoutDirection()
         }
         present(activityViewController, animated: true, completion: { })
-
+    }
+    
+    func animate(transformation: CGAffineTransform) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.myView.transform = transformation
+            self.swipeLabelView.transform = transformation
+        })
     }
 }
 
