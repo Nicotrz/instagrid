@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wA-SW-XlO">
-                                <rect key="frame" x="62.666666666666629" y="688" width="80" height="80"/>
+                                <rect key="frame" x="62.666666666666657" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="Xne-6N-KfD"/>
                                     <constraint firstAttribute="height" constant="80" id="mSA-M2-hmq"/>
@@ -38,7 +38,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAW-qs-CLq">
-                                <rect key="frame" x="147.66666666666663" y="688" width="80" height="80"/>
+                                <rect key="frame" x="147.66666666666666" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="J6B-1N-PLG"/>
                                     <constraint firstAttribute="width" constant="80" id="TjU-99-CIB"/>
@@ -70,14 +70,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="Atn-fY-Ppm">
-                                <rect key="frame" x="62.666666666666629" y="688" width="80" height="80"/>
+                                <rect key="frame" x="62.666666666666657" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="WcR-4g-BZq"/>
                                     <constraint firstAttribute="width" constant="80" id="yA6-3q-Av1"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-yH-Pd5">
-                                <rect key="frame" x="147.66666666666663" y="688" width="80" height="80"/>
+                                <rect key="frame" x="147.66666666666666" y="688" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="LGU-gD-CWq"/>
                                     <constraint firstAttribute="width" constant="80" id="k5Y-v6-n3F"/>
@@ -285,6 +285,12 @@
                                             <constraint firstItem="jff-Cb-H0q" firstAttribute="top" secondItem="Yzd-83-k3S" secondAttribute="top" id="mNk-4E-6hY"/>
                                         </constraints>
                                     </view>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="L5A-J2-wgi">
+                                        <rect key="frame" x="159" y="159" width="37" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.083348117768764496" green="0.39431697130203247" blue="0.5961030125617981" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -552,6 +558,7 @@
                         <outlet property="fourthSquareImage" destination="JEh-Yg-MYg" id="3d8-mF-YMF"/>
                         <outlet property="fourthSquarePlusLabel" destination="3AK-so-HE0" id="JJg-ld-mXr"/>
                         <outlet property="fourthSquareView" destination="ebT-aK-j8I" id="A7Y-RJ-KJz"/>
+                        <outlet property="loadingIndicator" destination="L5A-J2-wgi" id="QHk-Ou-nrP"/>
                         <outlet property="myView" destination="Q5N-I0-m2J" id="8Tr-WW-DFD"/>
                         <outlet property="secondRectangleImage" destination="jff-Cb-H0q" id="JIu-E4-7hJ"/>
                         <outlet property="secondRectanglePlusLabel" destination="buN-ea-oQN" id="6e7-W1-jic"/>

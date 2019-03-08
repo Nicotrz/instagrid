@@ -66,6 +66,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var arrowLabel: UILabel!
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +108,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func randomizePictures(_ sender: Any) {
+        loadingIndicator.startAnimating()
+          let pictures = loadImages()
+            switch self.modelManager.state {
+            case .firstDisplay:
+                self.myView.setImage(ofView: self.firstRectangleImage, image: pictures[0], withPlusLabel: self.firstRectanglePlusLabel)
+                self.myView.setImage(ofView: self.thirdSquareImage, image: pictures[1], withPlusLabel: self.thirdSquarePlusLabel)
+                self.myView.setImage(ofView: self.fourthSquareImage, image: pictures[2], withPlusLabel: self.fourthSquarePlusLabel)
+            case .secondDisplay:
+                self.myView.setImage(ofView: self.firstSquareImage, image: pictures[0], withPlusLabel: self.firstSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondSquareImage, image: pictures[1], withPlusLabel: self.secondSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondRectangleImage, image: pictures[2], withPlusLabel: self.secondRectanglePlusLabel)
+            case .thirdDisplay:
+                self.myView.setImage(ofView: self.firstSquareImage, image: pictures[0], withPlusLabel: self.firstSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondSquareImage, image: pictures[1], withPlusLabel: self.secondSquarePlusLabel)
+                self.myView.setImage(ofView: self.thirdSquareImage, image: pictures[2], withPlusLabel: self.thirdSquarePlusLabel)
+                self.myView.setImage(ofView: self.fourthSquareImage, image: pictures[3], withPlusLabel: self.fourthSquarePlusLabel)
+            }
+        loadingIndicator.stopAnimating()
+    }
+
+    func checkEquality(firstInt: Int, secondInt: Int, thirdInt: Int, fourthInt: Int ) -> Bool {
+        
+        if ( firstInt == secondInt || firstInt == thirdInt || firstInt == fourthInt || secondInt == thirdInt || secondInt == fourthInt || thirdInt == fourthInt ) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func loadImages() -> [UIImage] {
+        var result = [UIImage]()
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
                                                          ascending: false)]
@@ -114,14 +146,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                                              PHAssetMediaType.image.rawValue,
                                              PHAssetMediaType.video.rawValue)
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-
-        print (allPhotos.count)
-         let random = Int.random(in: 0...allPhotos.count-1)
-       //let random = 1
-        firstRectangleImage.isHidden = false
-        firstRectangleImage.image = getAssetThumbnail(asset: allPhotos[random])
+        var randomPictureOne = 0
+        var randomPictureTwo = 0
+        var randomPictureThree = 0
+        var randomPictureFour = 0
+            while self.checkEquality(firstInt: randomPictureOne, secondInt: randomPictureTwo, thirdInt: randomPictureThree, fourthInt: randomPictureFour) {
+                let randomRange = 0...allPhotos.count - 1
+                randomPictureOne = Int.random(in: randomRange)
+                randomPictureTwo = Int.random(in: randomRange)
+                randomPictureThree = Int.random(in: randomRange)
+                randomPictureFour = Int.random(in: randomRange)
+            }
+            
+            result.append (self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureOne]) )
+            result.append ( self.modelManager.getAssetThumbnail(asset:allPhotos[randomPictureTwo]) )
+            result.append ( self.modelManager.getAssetThumbnail(asset:allPhotos[randomPictureThree]) )
+            switch self.modelManager.state {
+            case .thirdDisplay:
+                result.append ( self.modelManager.getAssetThumbnail(asset:allPhotos[randomPictureFour]) )
+            default:
+                break
+            }
+        return result
     }
-
+    
     func checkPermission() {
         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         switch photoAuthorizationStatus {
@@ -146,24 +194,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
 
-    func getAssetThumbnail(asset: PHAsset) -> UIImage {
-        var retimage = UIImage()
-        let manager = PHImageManager.default()
-        let requestOptions = PHImageRequestOptions()
-        requestOptions.resizeMode   = PHImageRequestOptionsResizeMode.exact
-        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
-        requestOptions.isNetworkAccessAllowed = true
-        requestOptions.isSynchronous = true
-        manager.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFit, options: requestOptions, resultHandler: {(result, info)->Void in
-            if let myImage = result {
-                retimage = myImage
-            }
-            
-        })
-        print("Picture is ready!")
-        return retimage
-    }
-    
     func callPicker(withPicker picker: PickerChoose) {
         pickerChoose = picker
         let picker = UIImagePickerController()
@@ -206,14 +236,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func switchToFirstDisplay(_ sender: Any) {
         myView.switchDisplay(state: .firstDisplay)
+        modelManager.state = .firstDisplay
     }
     
     @IBAction func switchToSecondDisplay(_ sender: Any) {
         myView.switchDisplay(state: .secondDisplay)
+        modelManager.state = .secondDisplay
     }
     
     @IBAction func switchToThirdDisplay(_ sender: Any) {
         myView.switchDisplay(state: .thirdDisplay)
+        modelManager.state = .thirdDisplay
     }
     
     @IBAction func shareGesture(_ sender: Any) {

@@ -7,9 +7,19 @@
 //
 
 import UIKit
+import Photos
 
 class InstagridModel {
-        
+    
+    enum State
+    {
+        case firstDisplay
+        case secondDisplay
+        case thirdDisplay
+    }
+
+    var state: State = .secondDisplay
+    
     func asImage(ofView myView: UIView) -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: myView.bounds)
         return renderer.image { rendererContext in
@@ -17,4 +27,20 @@ class InstagridModel {
         }
     }
 
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        var retimage = UIImage()
+        let manager = PHImageManager.default()
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.resizeMode   = PHImageRequestOptionsResizeMode.exact
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
+        requestOptions.isNetworkAccessAllowed = true
+        requestOptions.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFit, options: requestOptions, resultHandler: {(result, info)->Void in
+            if let myImage = result {
+                retimage = myImage
+            }
+            
+        })
+        return retimage
+    }
 }
