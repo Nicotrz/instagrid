@@ -70,6 +70,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird, arrowLabel: arrowLabel, swipeLabel: swipeLabel)
+        checkPermission()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -115,18 +116,51 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
 
         print (allPhotos.count)
-       // let random = Int.random(in: 1...allPhotos.count)
-        let random = Int.random(in: 0...allPhotos.count-1)
+         let random = Int.random(in: 0...allPhotos.count-1)
+       //let random = 1
         firstRectangleImage.isHidden = false
         firstRectangleImage.image = getAssetThumbnail(asset: allPhotos[random])
+    }
+
+    func checkPermission() {
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        switch photoAuthorizationStatus {
+        case .authorized:
+            print("Access is granted by user")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                print("status is \(newStatus)")
+                if newStatus ==  PHAuthorizationStatus.authorized {
+                    /* do stuff here */
+                    print("success")
+                }
+            })
+            print("It is not determined until now")
+        case .restricted:
+            // same same
+            print("User do not have access to photo album.")
+        case .denied:
+            // same same
+            print("User has denied the permission.")
+        }
     }
 
     func getAssetThumbnail(asset: PHAsset) -> UIImage {
         var retimage = UIImage()
         let manager = PHImageManager.default()
-        manager.requestImage(for: asset, targetSize: CGSize(width: 500.0, height: 500.0), contentMode: .aspectFill, options: nil, resultHandler: {(result, info)->Void in
-            retimage = result!
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.resizeMode   = PHImageRequestOptionsResizeMode.exact
+        requestOptions.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
+        requestOptions.isNetworkAccessAllowed = true
+        requestOptions.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFit, options: requestOptions, resultHandler: {(result, info)->Void in
+            if let myImage = result {
+                retimage = myImage
+            }
+            
         })
+        print("Picture is ready!")
         return retimage
     }
     
