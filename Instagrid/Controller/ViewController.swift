@@ -26,6 +26,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         case left
     }
     
+    
+    var test = [UIImage]()
+    
     let modelManager = InstagridModel()
     
     var pickerChoose: PickerChoose = .firstSquare
@@ -67,6 +70,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var arrowLabel: UILabel!
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,24 +112,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func randomizePictures(_ sender: Any) {
-        loadingIndicator.startAnimating()
-          let pictures = loadImages()
+        self.loadingIndicator.startAnimating()
+        self.loadingView.isHidden = false
+        DispatchQueue.global(qos: .background).async {
+          self.loadImages()
+            DispatchQueue.main.async {
             switch self.modelManager.state {
             case .firstDisplay:
-                self.myView.setImage(ofView: self.firstRectangleImage, image: pictures[0], withPlusLabel: self.firstRectanglePlusLabel)
-                self.myView.setImage(ofView: self.thirdSquareImage, image: pictures[1], withPlusLabel: self.thirdSquarePlusLabel)
-                self.myView.setImage(ofView: self.fourthSquareImage, image: pictures[2], withPlusLabel: self.fourthSquarePlusLabel)
+                self.myView.setImage(ofView: self.firstRectangleImage, image: self.test[0], withPlusLabel: self.firstRectanglePlusLabel)
+                self.myView.setImage(ofView: self.thirdSquareImage, image: self.test[1], withPlusLabel: self.thirdSquarePlusLabel)
+                self.myView.setImage(ofView: self.fourthSquareImage, image: self.test[2], withPlusLabel: self.fourthSquarePlusLabel)
             case .secondDisplay:
-                self.myView.setImage(ofView: self.firstSquareImage, image: pictures[0], withPlusLabel: self.firstSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondSquareImage, image: pictures[1], withPlusLabel: self.secondSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondRectangleImage, image: pictures[2], withPlusLabel: self.secondRectanglePlusLabel)
+                self.myView.setImage(ofView: self.firstSquareImage, image: self.test[0], withPlusLabel: self.firstSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondSquareImage, image: self.test[1], withPlusLabel: self.secondSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondRectangleImage, image: self.test[2], withPlusLabel: self.secondRectanglePlusLabel)
             case .thirdDisplay:
-                self.myView.setImage(ofView: self.firstSquareImage, image: pictures[0], withPlusLabel: self.firstSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondSquareImage, image: pictures[1], withPlusLabel: self.secondSquarePlusLabel)
-                self.myView.setImage(ofView: self.thirdSquareImage, image: pictures[2], withPlusLabel: self.thirdSquarePlusLabel)
-                self.myView.setImage(ofView: self.fourthSquareImage, image: pictures[3], withPlusLabel: self.fourthSquarePlusLabel)
+                self.myView.setImage(ofView: self.firstSquareImage, image: self.test[0], withPlusLabel: self.firstSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondSquareImage, image: self.test[1], withPlusLabel: self.secondSquarePlusLabel)
+                self.myView.setImage(ofView: self.thirdSquareImage, image: self.test[2], withPlusLabel: self.thirdSquarePlusLabel)
+                self.myView.setImage(ofView: self.fourthSquareImage, image: self.test[3], withPlusLabel: self.fourthSquarePlusLabel)
+        }
+                self.loadingIndicator.stopAnimating()
+                self.loadingView.isHidden = true
             }
-        loadingIndicator.stopAnimating()
+        }
     }
 
     func checkEquality(firstInt: Int, secondInt: Int, thirdInt: Int, fourthInt: Int ) -> Bool {
@@ -137,7 +147,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    func loadImages() -> [UIImage] {
+    func loadImages() {
         var result = [UIImage]()
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
@@ -158,16 +168,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 randomPictureFour = Int.random(in: randomRange)
             }
             
-            result.append (self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureOne]) )
-            result.append ( self.modelManager.getAssetThumbnail(asset:allPhotos[randomPictureTwo]) )
-            result.append ( self.modelManager.getAssetThumbnail(asset:allPhotos[randomPictureThree]) )
+            result.append ( self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureOne]) )
+            result.append ( self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureTwo]) )
+            result.append ( self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureThree]) )
             switch self.modelManager.state {
             case .thirdDisplay:
-                result.append ( self.modelManager.getAssetThumbnail(asset:allPhotos[randomPictureFour]) )
+                result.append ( self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureFour]) )
             default:
                 break
             }
-        return result
+        self.test=result
     }
     
     func checkPermission() {
