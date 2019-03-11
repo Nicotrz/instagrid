@@ -33,7 +33,7 @@ class InstagridModel {
         let requestOptions = PHImageRequestOptions()
         requestOptions.resizeMode   = PHImageRequestOptionsResizeMode.exact
         requestOptions.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
-        requestOptions.isNetworkAccessAllowed = false
+        requestOptions.isNetworkAccessAllowed = true
         requestOptions.isSynchronous = true
         manager.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFit, options: requestOptions, resultHandler: {(result, info)->Void in
             if let myImage = result {

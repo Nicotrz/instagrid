@@ -161,7 +161,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 let imagesToLoad = self.loadImages()
                 DispatchQueue.main.async {
                     print(imagesToLoad.count)
-                    if ( ( imagesToLoad.count < 3 )  || ( ( imagesToLoad.count < 4 ) && ( InstagridModel.state == .thirdDisplay )) ) {
+                    if ( imagesToLoad.count < 3  ) {
                         self.warningPermission(withMessage: "You need minimum 4 pictures on your library to use this feature")
                     } else {
                         switch InstagridModel.state {
@@ -206,8 +206,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
                                                          ascending: false)]
         fetchOptions.predicate = NSPredicate(format: "mediaType == %d || mediaType == %d",
-                                             PHAssetMediaType.image.rawValue,
-                                             PHAssetMediaType.video.rawValue)
+                                             PHAssetMediaType.image.rawValue)
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
         var randomPictureOne = 0
         var randomPictureTwo = 0
