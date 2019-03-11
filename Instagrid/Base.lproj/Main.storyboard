@@ -99,9 +99,6 @@
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="twb-BT-nQe">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="167.66666666666666"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="uG8-HO-szC" appends="YES" id="brJ-4a-3nW"/>
-                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0N-Xw-bZq">
                                                 <rect key="frame" x="146.66666666666666" y="22.333333333333343" width="42" height="123"/>
@@ -131,9 +128,6 @@
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JEh-Yg-MYg">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="LxF-gD-Q06" appends="YES" id="syS-LG-mW0"/>
-                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AK-so-HE0">
                                                 <rect key="frame" x="59.666666666666657" y="19" width="42" height="123"/>
@@ -163,9 +157,6 @@
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jOA-8i-reS">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="zT3-Sz-WNk" appends="YES" id="daj-5h-1je"/>
-                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJv-4e-vff">
                                                 <rect key="frame" x="59.666666666666671" y="19" width="42" height="123"/>
@@ -195,9 +186,6 @@
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqm-ao-EJl">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="xRv-GO-tXK" appends="YES" id="yZX-VW-ihM"/>
-                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQr-ut-p4D">
                                                 <rect key="frame" x="59.666666666666671" y="19" width="42" height="123"/>
@@ -227,9 +215,6 @@
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOA-7B-kkT">
                                                 <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="cx5-jf-aY9" appends="YES" id="Bb9-Ze-oCf"/>
-                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i56-QQ-J6O">
                                                 <rect key="frame" x="59.666666666666657" y="19" width="42" height="123"/>
@@ -259,9 +244,6 @@
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jff-Cb-H0q">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="167.33333333333334"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="VqX-1j-ttO" appends="YES" id="qFe-az-Fvh"/>
-                                                </connections>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buN-ea-oQN">
                                                 <rect key="frame" x="146.66666666666666" y="22" width="42" height="123"/>
@@ -365,7 +347,7 @@
                                     <action selector="randomizePictures:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LOB-am-7it"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxt-Tb-tjC">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxt-Tb-tjC">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -456,8 +438,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="f2I-h9-crl"/>
-                                <exclude reference="tTl-E3-h4A"/>
                                 <exclude reference="3LP-W6-Tn5"/>
                                 <exclude reference="6Lg-nr-YR4"/>
                                 <exclude reference="B8t-cb-XPC"/>
@@ -468,6 +448,8 @@
                                 <exclude reference="fwE-pw-5dP"/>
                                 <exclude reference="o1V-R5-B2U"/>
                                 <exclude reference="yla-sf-xs6"/>
+                                <exclude reference="f2I-h9-crl"/>
+                                <exclude reference="tTl-E3-h4A"/>
                                 <exclude reference="H1j-dw-GaL"/>
                                 <exclude reference="YT5-xE-s3H"/>
                                 <exclude reference="vTn-ld-67q"/>
@@ -503,10 +485,6 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <exclude reference="HsH-ho-39h"/>
-                                <include reference="f2I-h9-crl"/>
-                                <exclude reference="mI6-6A-Xlb"/>
-                                <include reference="tTl-E3-h4A"/>
                                 <exclude reference="2v1-hS-fwl"/>
                                 <exclude reference="3LP-W6-Tn5"/>
                                 <exclude reference="6Lg-nr-YR4"/>
@@ -524,6 +502,10 @@
                                 <exclude reference="o1V-R5-B2U"/>
                                 <exclude reference="qnc-St-FIJ"/>
                                 <include reference="yla-sf-xs6"/>
+                                <exclude reference="HsH-ho-39h"/>
+                                <include reference="f2I-h9-crl"/>
+                                <exclude reference="mI6-6A-Xlb"/>
+                                <include reference="tTl-E3-h4A"/>
                                 <exclude reference="H1j-dw-GaL"/>
                                 <include reference="YT5-xE-s3H"/>
                                 <exclude reference="bUw-nH-L0i"/>
@@ -568,10 +550,6 @@
                                 <include reference="Wjm-nB-TCE"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="DYa-YS-9Cv" appends="YES" id="uMG-vw-hL9"/>
-                            <outletCollection property="gestureRecognizers" destination="2mV-1L-elI" appends="YES" id="dzS-ky-Eqb"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="arrowLabel" destination="LVw-ol-HWD" id="mhC-hh-exx"/>
@@ -587,6 +565,7 @@
                         <outlet property="loadingIndicator" destination="L5A-J2-wgi" id="QHk-Ou-nrP"/>
                         <outlet property="loadingView" destination="sxt-Tb-tjC" id="qFj-2E-zk9"/>
                         <outlet property="myView" destination="Q5N-I0-m2J" id="8Tr-WW-DFD"/>
+                        <outlet property="randomButton" destination="epK-Ff-vQ5" id="4zq-5Q-CUL"/>
                         <outlet property="secondRectangleImage" destination="jff-Cb-H0q" id="JIu-E4-7hJ"/>
                         <outlet property="secondRectanglePlusLabel" destination="buN-ea-oQN" id="6e7-W1-jic"/>
                         <outlet property="secondRectangleView" destination="Yzd-83-k3S" id="FDd-vV-OeH"/>
@@ -604,46 +583,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="uG8-HO-szC">
-                    <connections>
-                        <action selector="addPictureToFirstRectangle:" destination="BYZ-38-t0r" id="YuS-oC-OOb"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="LxF-gD-Q06">
-                    <connections>
-                        <action selector="addPictureToFourthSquare:" destination="BYZ-38-t0r" id="l0l-RQ-OYP"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="zT3-Sz-WNk">
-                    <connections>
-                        <action selector="addPictureToThirdSquare:" destination="BYZ-38-t0r" id="H0A-sr-YHi"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="xRv-GO-tXK">
-                    <connections>
-                        <action selector="addPictureToFirstSquare:" destination="BYZ-38-t0r" id="rR4-fE-Smr"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="cx5-jf-aY9">
-                    <connections>
-                        <action selector="addPictureToSecondSquare:" destination="BYZ-38-t0r" id="N3y-rF-5yO"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="VqX-1j-ttO">
-                    <connections>
-                        <action selector="addPictureToSecondRectangle:" destination="BYZ-38-t0r" id="Whz-YK-rQb"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <swipeGestureRecognizer direction="up" id="DYa-YS-9Cv">
-                    <connections>
-                        <action selector="shareGesture:" destination="BYZ-38-t0r" id="C0z-wR-k7i"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="2mV-1L-elI">
-                    <connections>
-                        <action selector="shareGestureRight:" destination="BYZ-38-t0r" id="sch-rv-aCO"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="52" y="25.862068965517242"/>
         </scene>

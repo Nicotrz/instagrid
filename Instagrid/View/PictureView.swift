@@ -35,6 +35,7 @@ class PictureView: UIView {
     
     private var arrowLabel = UILabel()
     private var swipeLabel = UILabel()
+    private var randomButton = UIButton()
     
     
     var arrowDirrection: ArrowDirrection = .down {
@@ -87,7 +88,7 @@ class PictureView: UIView {
         }, completion: nil)
     }
     
-    func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView, arrowLabel: UILabel, swipeLabel: UILabel) {
+    func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView, arrowLabel: UILabel, swipeLabel: UILabel, randomButton: UIButton) {
         self.firstSquareView = firstSquareView
         self.secondSquareView = secondSquareView
         self.thirdSquareView = thirdSquareView
@@ -99,6 +100,7 @@ class PictureView: UIView {
         self.selectedSquareThird = selectedSquareThird
         self.arrowLabel = arrowLabel
         self.swipeLabel = swipeLabel
+        self.randomButton = randomButton
         self.arrowDirrection = .down
     }
     

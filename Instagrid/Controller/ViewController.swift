@@ -26,9 +26,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         case left
     }
     
-    
-    var test = [UIImage]()
-    
     let modelManager = InstagridModel()
     
     var pickerChoose: PickerChoose = .firstSquare
@@ -68,14 +65,58 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var arrowLabel: UILabel!
+    @IBOutlet weak var randomButton: UIButton!
+    
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingView: UIView!
     
     override func viewDidLoad() {
+        myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird, arrowLabel: arrowLabel, swipeLabel: swipeLabel, randomButton: randomButton)
+        
+        let swipeRecognizerUp = UISwipeGestureRecognizer(target: self, action: #selector(shareGestureUp(_:)))
+        swipeRecognizerUp.direction = .up
+        myView.addGestureRecognizer(swipeRecognizerUp)
+        
+        let swipeRecognizerLeft = UISwipeGestureRecognizer(target: self, action: #selector(shareGestureLeft(_:)))
+        swipeRecognizerLeft.direction = .left
+        myView.addGestureRecognizer(swipeRecognizerLeft)
+        
+        let tapRecognizerFirstRectangle = UITapGestureRecognizer(target: self, action: #selector(addPictureToFirstRectangle(_:)))
+        firstRectangleView.addGestureRecognizer(tapRecognizerFirstRectangle)
+        
+        let tapRecognizerSecondRectangle = UITapGestureRecognizer(target: self, action: #selector(addPictureToSecondRectangle(_:)))
+        secondRectangleView.addGestureRecognizer(tapRecognizerSecondRectangle)
+        
+        let tapRecognizerFirstSquare = UITapGestureRecognizer(target: self, action: #selector(addPictureToFirstSquare(_:)))
+        firstSquareView.addGestureRecognizer(tapRecognizerFirstSquare)
+        
+        let tapRecognizerSecondSquare = UITapGestureRecognizer(target: self, action: #selector(addPictureToSecondSquare(_:)))
+        secondSquareView.addGestureRecognizer(tapRecognizerSecondSquare)
+        
+        let tapRecognizerThirdSquare = UITapGestureRecognizer(target: self, action: #selector(addPictureToThirdSquare(_:)))
+        thirdSquareView.addGestureRecognizer(tapRecognizerThirdSquare)
+        
+        let tapRecognizerFourthSquare = UITapGestureRecognizer(target: self, action: #selector(addPictureToFourthSquare(_:)))
+        fourthSquareView.addGestureRecognizer(tapRecognizerFourthSquare)
+        
         super.viewDidLoad()
-        myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird, arrowLabel: arrowLabel, swipeLabel: swipeLabel)
-        checkPermission()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !checkPermission() {
+            warningPermission()
+        }
+    }
+    
+    func warningPermission() {
+        let alert = UIAlertController(title: "Warning", message: "The app has no access to your photo library. The random feature cannot run! \r\r Please unlock the access on settings to use the feature.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -87,6 +128,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillTransition(to: size, with: coordinator)
     }
 
+    
     @IBAction func addPictureToFirstRectangle(_ sender: Any) {
         callPicker(withPicker: .firstRectangle)
     }
@@ -112,29 +154,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func randomizePictures(_ sender: Any) {
+        if checkPermission() {
         self.loadingIndicator.startAnimating()
-        self.loadingView.isHidden = false
+        UIView.animate(withDuration: 0.50, animations: {
+            self.loadingView.alpha = 0.75
+            
+        }, completion: nil)
         DispatchQueue.global(qos: .background).async {
-          self.loadImages()
+          let imagesToLoad = self.loadImages()
             DispatchQueue.main.async {
             switch self.modelManager.state {
             case .firstDisplay:
-                self.myView.setImage(ofView: self.firstRectangleImage, image: self.test[0], withPlusLabel: self.firstRectanglePlusLabel)
-                self.myView.setImage(ofView: self.thirdSquareImage, image: self.test[1], withPlusLabel: self.thirdSquarePlusLabel)
-                self.myView.setImage(ofView: self.fourthSquareImage, image: self.test[2], withPlusLabel: self.fourthSquarePlusLabel)
+                self.myView.setImage(ofView: self.firstRectangleImage, image: imagesToLoad[0], withPlusLabel: self.firstRectanglePlusLabel)
+                self.myView.setImage(ofView: self.thirdSquareImage, image: imagesToLoad[1], withPlusLabel: self.thirdSquarePlusLabel)
+                self.myView.setImage(ofView: self.fourthSquareImage, image: imagesToLoad[2], withPlusLabel: self.fourthSquarePlusLabel)
             case .secondDisplay:
-                self.myView.setImage(ofView: self.firstSquareImage, image: self.test[0], withPlusLabel: self.firstSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondSquareImage, image: self.test[1], withPlusLabel: self.secondSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondRectangleImage, image: self.test[2], withPlusLabel: self.secondRectanglePlusLabel)
+                self.myView.setImage(ofView: self.firstSquareImage, image: imagesToLoad[0], withPlusLabel: self.firstSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondSquareImage, image: imagesToLoad[1], withPlusLabel: self.secondSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondRectangleImage, image: imagesToLoad[2], withPlusLabel: self.secondRectanglePlusLabel)
             case .thirdDisplay:
-                self.myView.setImage(ofView: self.firstSquareImage, image: self.test[0], withPlusLabel: self.firstSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondSquareImage, image: self.test[1], withPlusLabel: self.secondSquarePlusLabel)
-                self.myView.setImage(ofView: self.thirdSquareImage, image: self.test[2], withPlusLabel: self.thirdSquarePlusLabel)
-                self.myView.setImage(ofView: self.fourthSquareImage, image: self.test[3], withPlusLabel: self.fourthSquarePlusLabel)
+                self.myView.setImage(ofView: self.firstSquareImage, image: imagesToLoad[0], withPlusLabel: self.firstSquarePlusLabel)
+                self.myView.setImage(ofView: self.secondSquareImage, image: imagesToLoad[1], withPlusLabel: self.secondSquarePlusLabel)
+                self.myView.setImage(ofView: self.thirdSquareImage, image: imagesToLoad[2], withPlusLabel: self.thirdSquarePlusLabel)
+                self.myView.setImage(ofView: self.fourthSquareImage, image: imagesToLoad[3], withPlusLabel: self.fourthSquarePlusLabel)
         }
                 self.loadingIndicator.stopAnimating()
-                self.loadingView.isHidden = true
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.loadingView.alpha = 0.0
+                }, completion: nil)
             }
+        }
+        } else {
+            warningPermission()
         }
     }
 
@@ -147,7 +198,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    func loadImages() {
+    func loadImages() -> [UIImage] {
         var result = [UIImage]()
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
@@ -177,31 +228,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             default:
                 break
             }
-        self.test=result
+        return result
     }
     
-    func checkPermission() {
+    func checkPermission() -> Bool {
+        var status = false
         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         switch photoAuthorizationStatus {
         case .authorized:
-            print("Access is granted by user")
+            status = true
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization({
                 (newStatus) in
-                print("status is \(newStatus)")
                 if newStatus ==  PHAuthorizationStatus.authorized {
-                    /* do stuff here */
-                    print("success")
+                    status = true
                 }
             })
-            print("It is not determined until now")
-        case .restricted:
-            // same same
-            print("User do not have access to photo album.")
         case .denied:
-            // same same
-            print("User has denied the permission.")
+            break
+        case .restricted:
+            break
         }
+        return status
     }
 
     func callPicker(withPicker picker: PickerChoose) {
@@ -259,15 +307,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         modelManager.state = .thirdDisplay
     }
     
-    @IBAction func shareGesture(_ sender: Any) {
-        if UIDevice.current.orientation.isPortrait {
-            handleShare(withDirection: .up)
-        }
+    @objc func shareGestureUp(_ sender: UIGestureRecognizer) {
+        shareGesture(sender: sender, direction: .up)
     }
     
-    @IBAction func shareGestureRight(_ sender: Any) {
-        if UIDevice.current.orientation.isLandscape {
-            handleShare(withDirection: .left)
+    @objc func shareGestureLeft(_ sender: UIGestureRecognizer) {
+        shareGesture(sender: sender, direction: .left)
+    }
+    
+    func shareGesture(sender: UIGestureRecognizer, direction: Direction) {
+        if ( ( ( UIDevice.current.orientation.isPortrait ) && ( direction == .up ) ) || ( ( UIDevice.current.orientation.isLandscape ) && ( direction == .left ) ) ) {
+            handleShare(withDirection: direction)
         }
     }
     
@@ -297,6 +347,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIView.animate(withDuration: 0.3, animations: {
             self.myView.transform = transformation
             self.swipeLabelView.transform = transformation
+            self.randomButton.transform = transformation
         })
     }
 }
