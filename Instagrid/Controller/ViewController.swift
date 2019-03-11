@@ -25,9 +25,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         case up
         case left
     }
-    
-    let modelManager = InstagridModel()
-    
+
     var pickerChoose: PickerChoose = .firstSquare
     
     @IBOutlet weak var myView: PictureView!
@@ -155,39 +153,43 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func randomizePictures(_ sender: Any) {
         if checkPermission() {
-        self.loadingIndicator.startAnimating()
-        UIView.animate(withDuration: 0.50, animations: {
-            self.loadingView.alpha = 0.75
-            
-        }, completion: nil)
-        DispatchQueue.global(qos: .background).async {
-          let imagesToLoad = self.loadImages()
-            DispatchQueue.main.async {
-            switch self.modelManager.state {
-            case .firstDisplay:
-                self.myView.setImage(ofView: self.firstRectangleImage, image: imagesToLoad[0], withPlusLabel: self.firstRectanglePlusLabel)
-                self.myView.setImage(ofView: self.thirdSquareImage, image: imagesToLoad[1], withPlusLabel: self.thirdSquarePlusLabel)
-                self.myView.setImage(ofView: self.fourthSquareImage, image: imagesToLoad[2], withPlusLabel: self.fourthSquarePlusLabel)
-            case .secondDisplay:
-                self.myView.setImage(ofView: self.firstSquareImage, image: imagesToLoad[0], withPlusLabel: self.firstSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondSquareImage, image: imagesToLoad[1], withPlusLabel: self.secondSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondRectangleImage, image: imagesToLoad[2], withPlusLabel: self.secondRectanglePlusLabel)
-            case .thirdDisplay:
-                self.myView.setImage(ofView: self.firstSquareImage, image: imagesToLoad[0], withPlusLabel: self.firstSquarePlusLabel)
-                self.myView.setImage(ofView: self.secondSquareImage, image: imagesToLoad[1], withPlusLabel: self.secondSquarePlusLabel)
-                self.myView.setImage(ofView: self.thirdSquareImage, image: imagesToLoad[2], withPlusLabel: self.thirdSquarePlusLabel)
-                self.myView.setImage(ofView: self.fourthSquareImage, image: imagesToLoad[3], withPlusLabel: self.fourthSquarePlusLabel)
-        }
-                self.loadingIndicator.stopAnimating()
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.loadingView.alpha = 0.0
-                }, completion: nil)
+            self.loadingIndicator.startAnimating()
+            UIView.animate(withDuration: 0.50, animations: {
+                self.loadingView.alpha = 0.75
+            }, completion: nil)
+            DispatchQueue.global(qos: .background).async {
+                let imagesToLoad = self.loadImages()
+                DispatchQueue.main.async {
+                    print(imagesToLoad.count)
+                    if ( ( imagesToLoad.count < 3 )  || ( ( imagesToLoad.count < 4 ) && ( InstagridModel.state == .thirdDisplay )) ) {
+                        self.warningPermission(withMessage: "You need minimum 4 pictures on your library to use this feature")
+                    } else {
+                        switch InstagridModel.state {
+                        case .firstDisplay:
+                            self.myView.setImage(ofView: self.firstRectangleImage, image: imagesToLoad[0], withPlusLabel: self.firstRectanglePlusLabel)
+                            self.myView.setImage(ofView: self.thirdSquareImage, image: imagesToLoad[1], withPlusLabel: self.thirdSquarePlusLabel)
+                            self.myView.setImage(ofView: self.fourthSquareImage, image: imagesToLoad[2], withPlusLabel: self.fourthSquarePlusLabel)
+                        case .secondDisplay:
+                            self.myView.setImage(ofView: self.firstSquareImage, image: imagesToLoad[0], withPlusLabel: self.firstSquarePlusLabel)
+                            self.myView.setImage(ofView: self.secondSquareImage, image: imagesToLoad[1], withPlusLabel: self.secondSquarePlusLabel)
+                            self.myView.setImage(ofView: self.secondRectangleImage, image: imagesToLoad[2], withPlusLabel: self.secondRectanglePlusLabel)
+                        case .thirdDisplay:
+                            self.myView.setImage(ofView: self.firstSquareImage, image: imagesToLoad[0], withPlusLabel: self.firstSquarePlusLabel)
+                            self.myView.setImage(ofView: self.secondSquareImage, image: imagesToLoad[1], withPlusLabel: self.secondSquarePlusLabel)
+                            self.myView.setImage(ofView: self.thirdSquareImage, image: imagesToLoad[2], withPlusLabel: self.thirdSquarePlusLabel)
+                            self.myView.setImage(ofView: self.fourthSquareImage, image: imagesToLoad[3], withPlusLabel: self.fourthSquarePlusLabel)
+                        }
+                    }
+                    self.loadingIndicator.stopAnimating()
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.loadingView.alpha = 0.0
+                    }, completion: nil)
+                }
+                }
+            } else {
+                warningPermission(withMessage: "The app has no access to your photo library. The random feature cannot run! \r\r Please unlock the access on settings to use the feature.")
             }
         }
-        } else {
-            warningPermission(withMessage: "The app has no access to your photo library. The random feature cannot run! \r\r Please unlock the access on settings to use the feature.")
-        }
-    }
 
     func checkEquality(firstInt: Int, secondInt: Int, thirdInt: Int, fourthInt: Int ) -> Bool {
         
@@ -211,6 +213,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         var randomPictureTwo = 0
         var randomPictureThree = 0
         var randomPictureFour = 0
+        if allPhotos.count < 4 {
+            return result
+        }
             while self.checkEquality(firstInt: randomPictureOne, secondInt: randomPictureTwo, thirdInt: randomPictureThree, fourthInt: randomPictureFour) {
                 let randomRange = 0...allPhotos.count - 1
                 randomPictureOne = Int.random(in: randomRange)
@@ -218,13 +223,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 randomPictureThree = Int.random(in: randomRange)
                 randomPictureFour = Int.random(in: randomRange)
             }
-            
-            result.append ( self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureOne]) )
-            result.append ( self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureTwo]) )
-            result.append ( self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureThree]) )
-            switch self.modelManager.state {
+            result.append ( InstagridModel.getAssetThumbnail(asset: allPhotos[randomPictureOne]) )
+            result.append ( InstagridModel.getAssetThumbnail(asset: allPhotos[randomPictureTwo]) )
+            result.append ( InstagridModel.getAssetThumbnail(asset: allPhotos[randomPictureThree]) )
+            switch InstagridModel.state {
             case .thirdDisplay:
-                result.append ( self.modelManager.getAssetThumbnail(asset: allPhotos[randomPictureFour]) )
+                result.append ( InstagridModel.getAssetThumbnail(asset: allPhotos[randomPictureFour]) )
             default:
                 break
             }
@@ -294,17 +298,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func switchToFirstDisplay(_ sender: Any) {
         myView.switchDisplay(state: .firstDisplay)
-        modelManager.state = .firstDisplay
+        InstagridModel.state = .firstDisplay
     }
     
     @IBAction func switchToSecondDisplay(_ sender: Any) {
         myView.switchDisplay(state: .secondDisplay)
-        modelManager.state = .secondDisplay
+        InstagridModel.state = .secondDisplay
     }
     
     @IBAction func switchToThirdDisplay(_ sender: Any) {
         myView.switchDisplay(state: .thirdDisplay)
-        modelManager.state = .thirdDisplay
+        InstagridModel.state = .thirdDisplay
     }
     
     @objc func shareGestureUp(_ sender: UIGestureRecognizer) {
@@ -334,7 +338,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         let translationTransform = CGAffineTransform(translationX: x, y: y)
         self.animate(transformation: translationTransform)
-        let shareContent = modelManager.asImage(ofView: myView)
+        let shareContent = InstagridModel.asImage(ofView: myView)
         let activityViewController = UIActivityViewController(activityItems: [shareContent as UIImage], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             self.animate(transformation: .identity )

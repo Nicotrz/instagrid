@@ -47,10 +47,10 @@
 		<string>ThirstySoftRegular.otf</string>
 	</array>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>Your access is needed to save the picture</string>
+	<string>Your access is needed to save the picture and use the random pictures feature</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your access is needed to save the picture</string>
+	<string>Your access is needed to save the picture and use the random pictures feature</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Your access is needed to save the picture</string>
+	<string>Your access is needed to save the picture and use the random pictures feature</string>
 </dict>
 </plist>
