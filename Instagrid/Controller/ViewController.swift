@@ -105,15 +105,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         if !checkPermission() {
-            warningPermission()
+            print("No Permission Allowed")
         }
+        super.viewDidAppear(animated)
     }
     
-    func warningPermission() {
-        let alert = UIAlertController(title: "Warning", message: "The app has no access to your photo library. The random feature cannot run! \r\r Please unlock the access on settings to use the feature.", preferredStyle: .alert)
-        
+    func warningPermission(withMessage message: String) {
+        let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
+
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(alert, animated: true)
@@ -185,7 +185,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
         } else {
-            warningPermission()
+            warningPermission(withMessage: "The app has no access to your photo library. The random feature cannot run! \r\r Please unlock the access on settings to use the feature.")
         }
     }
 
