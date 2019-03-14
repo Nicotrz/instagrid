@@ -28,6 +28,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         case left
     }
 
+    // Enumeration for the direction of the animated arrow
+    enum ArrowDirrection
+    {
+        case down
+        case left
+    }
+
     // Just to initialize the pickerChoose on a default value
     var pickerChoose: PickerChoose = .firstSquare
     
@@ -73,10 +80,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingView: UIView!
     
+    // When the arrowDirrection variable change, we change the text of the swipeLabel and the arrowLabel to match the screen, and we animate the arrow on the right direction
+    var arrowDirrection: ArrowDirrection = .down {
+        didSet {
+            arrowLabel.transform = .identity
+            switch arrowDirrection {
+            case .down:
+                animateTheArrow(arrowDirrection: .down)
+                swipeLabel.text = "Swipe up to share"
+                arrowLabel.text = "^"
+            case .left:
+                animateTheArrow(arrowDirrection: .left)
+                swipeLabel.text = "Swipe left to share"
+                arrowLabel.text = "<"
+            }
+        }
+    }
+
+    
+    
     // We add some instructions to the viewDidLoad
     override func viewDidLoad() {
         // Setting the picture view with the IBOutlets
-        myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird, arrowLabel: arrowLabel, swipeLabel: swipeLabel, randomButton: randomButton)
+        myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird )
         
         // Setting a gestureRecognizer for the share gesture ( up direction )
         let swipeRecognizerUp = UISwipeGestureRecognizer(target: self, action: #selector(shareGestureUp(_:)))
@@ -126,9 +152,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         // If the device is now landscape, we change the text and arrow to left, else we set it to down
         if UIDevice.current.orientation.isLandscape {
-            myView.arrowDirrection = .left
+            arrowDirrection = .left
         } else {
-            myView.arrowDirrection = .down
+            arrowDirrection = .down
         }
         // now we let the viewWillTransition continue normally
         super.viewWillTransition(to: size, with: coordinator)
@@ -407,7 +433,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             // When the share is over, we can animate the objects back to their original places and start to animate the arrow again ( when we moved it, it automatically cut the animation )
             self.animate(transformation: .identity )
-            self.myView.animateTheArrowWhitoutDirection()
+            self.animateTheArrowWhitoutDirection()
         }
         // The activityViewController is ready to be presented
         present(activityViewController, animated: true, completion: { })
@@ -420,6 +446,42 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.swipeLabelView.transform = transformation
             self.randomButton.transform = transformation
         })
+    }
+    
+    // This function animate the arrow on the direction sended on argument
+    private func animateTheArrow(arrowDirrection: ArrowDirrection) {
+        // The object who will handle the animation
+        let translationTransform: CGAffineTransform
+        
+        // This constand indicate the coordinates of the animation - setted in function of the direction sended on argument
+        let x: CGFloat
+        let y: CGFloat
+        switch arrowDirrection {
+        case .down:
+            x = 0
+            y = -20
+        case .left:
+            x = 20
+            y = 0
+        }
+        translationTransform = CGAffineTransform(translationX: x, y: y)
+        // We animate the arrow on loop ( repeat and autoreverse )
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
+            
+            self.arrowLabel.transform = translationTransform
+            
+        }, completion: nil)
+    }
+    
+    // This function is called to animate the arrow only whitout knowing the direction
+    func animateTheArrowWhitoutDirection() {
+        // If the device is portrait oriented, we animate it on the down direction
+        if UIDevice.current.orientation.isPortrait {
+            animateTheArrow(arrowDirrection: .down)
+        } else {
+            // If the device is landscape oriented, we animate it on the left direction
+            animateTheArrow(arrowDirrection: .left)
+        }
     }
 }
 

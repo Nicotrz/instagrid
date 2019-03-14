@@ -17,13 +17,6 @@ class PictureView: UIView {
         case secondDisplay
         case thirdDisplay
     }
-    
-    // Enumeration for the direction of the animated arrow
-    enum ArrowDirrection
-    {
-        case down
-        case left
-    }
 
     // Elements of the view who will be used here
     private var firstSquareView = UIView()
@@ -36,27 +29,6 @@ class PictureView: UIView {
     private var selectedSquareSecond = UIImageView()
     private var selectedSquareThird = UIImageView()
     
-    private var arrowLabel = UILabel()
-    private var swipeLabel = UILabel()
-    private var randomButton = UIButton()
-    
-    
-    // When the arrowDirrection variable change, we change the text of the swipeLabel and the arrowLabel to match the screen, and we animate the arrow on the right direction
-    var arrowDirrection: ArrowDirrection = .down {
-        didSet {
-            arrowLabel.transform = .identity
-            switch arrowDirrection {
-            case .down:
-                animateTheArrow(arrowDirrection: .down)
-                swipeLabel.text = "Swipe up to share"
-                arrowLabel.text = "^"
-            case .left:
-                animateTheArrow(arrowDirrection: .left)
-                swipeLabel.text = "Swipe left to share"
-                arrowLabel.text = "<"
-            }
-        }
-    }
     
     // This function is called to change the grid
     func switchDisplay(state: State ) {
@@ -70,44 +42,8 @@ class PictureView: UIView {
         }
     }
     
-    // This function is called to animate the arrow only whitout knowing the direction
-    func animateTheArrowWhitoutDirection() {
-        // If the device is portrait oriented, we animate it on the down direction
-        if UIDevice.current.orientation.isPortrait {
-            animateTheArrow(arrowDirrection: .down)
-        } else {
-            // If the device is landscape oriented, we animate it on the left direction
-            animateTheArrow(arrowDirrection: .left)
-        }
-    }
-    
-    // This function animate the arrow on the direction sended on argument
-    private func animateTheArrow(arrowDirrection: ArrowDirrection) {
-        // The object who will handle the animation
-        let translationTransform: CGAffineTransform
-        
-        // This constand indicate the coordinates of the animation - setted in function of the direction sended on argument
-        let x: CGFloat
-        let y: CGFloat
-        switch arrowDirrection {
-        case .down:
-            x = 0
-            y = -20
-        case .left:
-            x = 20
-            y = 0
-        }
-        translationTransform = CGAffineTransform(translationX: x, y: y)
-        // We animate the arrow on loop ( repeat and autoreverse )
-        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
-            
-            self.arrowLabel.transform = translationTransform
-            
-        }, completion: nil)
-    }
-    
     // This function set the properties with the argument sended by the controller
-    func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView, arrowLabel: UILabel, swipeLabel: UILabel, randomButton: UIButton) {
+    func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView) {
         self.firstSquareView = firstSquareView
         self.secondSquareView = secondSquareView
         self.thirdSquareView = thirdSquareView
@@ -117,10 +53,6 @@ class PictureView: UIView {
         self.selectedSquareFirst = selectedSquareFirst
         self.selectedSquareSecond = selectedSquareSecond
         self.selectedSquareThird = selectedSquareThird
-        self.arrowLabel = arrowLabel
-        self.swipeLabel = swipeLabel
-        self.randomButton = randomButton
-        self.arrowDirrection = .down
     }
     
     
