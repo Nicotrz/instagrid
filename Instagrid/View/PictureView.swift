@@ -10,6 +10,7 @@ import UIKit
 
 class PictureView: UIView {
 
+    // Enumeration for the different display states
     enum State
     {
         case firstDisplay
@@ -17,12 +18,14 @@ class PictureView: UIView {
         case thirdDisplay
     }
     
+    // Enumeration for the direction of the animated arrow
     enum ArrowDirrection
     {
         case down
         case left
     }
 
+    // Elements of the view who will be used here
     private var firstSquareView = UIView()
     private var secondSquareView =  UIView()
     private var thirdSquareView = UIView()
@@ -38,6 +41,7 @@ class PictureView: UIView {
     private var randomButton = UIButton()
     
     
+    // When the arrowDirrection variable change, we change the text of the swipeLabel and the arrowLabel to match the screen, and we animate the arrow on the right direction
     var arrowDirrection: ArrowDirrection = .down {
         didSet {
             arrowLabel.transform = .identity
@@ -54,6 +58,7 @@ class PictureView: UIView {
         }
     }
     
+    // This function is called to change the grid
     func switchDisplay(state: State ) {
         switch state {
         case .firstDisplay:
@@ -65,22 +70,35 @@ class PictureView: UIView {
         }
     }
     
+    // This function is called to animate the arrow only whitout knowing the direction
     func animateTheArrowWhitoutDirection() {
+        // If the device is portrait oriented, we animate it on the down direction
         if UIDevice.current.orientation.isPortrait {
             animateTheArrow(arrowDirrection: .down)
         } else {
+            // If the device is landscape oriented, we animate it on the left direction
             animateTheArrow(arrowDirrection: .left)
         }
     }
     
+    // This function animate the arrow on the direction sended on argument
     private func animateTheArrow(arrowDirrection: ArrowDirrection) {
+        // The object who will handle the animation
         let translationTransform: CGAffineTransform
+        
+        // This constand indicate the coordinates of the animation - setted in function of the direction sended on argument
+        let x: CGFloat
+        let y: CGFloat
         switch arrowDirrection {
         case .down:
-            translationTransform = CGAffineTransform(translationX: 0, y: -20 )
+            x = 0
+            y = -20
         case .left:
-            translationTransform = CGAffineTransform(translationX: 20, y: 0 )
+            x = 20
+            y = 0
         }
+        translationTransform = CGAffineTransform(translationX: x, y: y)
+        // We animate the arrow on loop ( repeat and autoreverse )
         UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse], animations: {
             
             self.arrowLabel.transform = translationTransform
@@ -88,6 +106,7 @@ class PictureView: UIView {
         }, completion: nil)
     }
     
+    // This function set the properties with the argument sended by the controller
     func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView, arrowLabel: UILabel, swipeLabel: UILabel, randomButton: UIButton) {
         self.firstSquareView = firstSquareView
         self.secondSquareView = secondSquareView
@@ -105,6 +124,7 @@ class PictureView: UIView {
     }
     
     
+    // This function change the view with the argument sended
     private func changeStateView(hideFirstSelected: Bool, hideSecondSelected:Bool, hideThirdSelected: Bool, hideFirstSquare: Bool, hideSecondSquare: Bool, hideThirdSquare: Bool, hideFourthSquare: Bool, hideFirstRectangle: Bool, hideSecondRectangle: Bool ) {
         selectedSquareFirst.isHidden = hideFirstSelected
         selectedSquareSecond.isHidden = hideSecondSelected
@@ -117,6 +137,7 @@ class PictureView: UIView {
         secondRectangleView.isHidden = hideSecondRectangle
     }
 
+    // This function set the image on one of the view of the grid with the UIImage, and will hide the + Label associated
     func setImage (ofView imageView: UIImageView, image: UIImage, withPlusLabel label: UIButton ) {
         imageView.image = image
         imageView.isHidden = false

@@ -12,6 +12,7 @@ import Photos
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 
+    // Enumeration of the differents view available on the PictureView
     enum PickerChoose {
         case firstSquare
         case secondSquare
@@ -21,13 +22,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         case secondRectangle
     }
     
+    // Enumeration of the different direction where we can send the PictureView when it is shared
     enum Direction {
         case up
         case left
     }
 
+    // Just to initialize the pickerChoose on a default value
     var pickerChoose: PickerChoose = .firstSquare
     
+    // Set the differents IBOutlets
     @IBOutlet weak var myView: PictureView!
     
     @IBOutlet weak var swipeLabelView: UIView!
@@ -69,17 +73,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingView: UIView!
     
+    // We add some instructions to the viewDidLoad
     override func viewDidLoad() {
+        // Setting the picture view with the IBOutlets
         myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird, arrowLabel: arrowLabel, swipeLabel: swipeLabel, randomButton: randomButton)
         
+        // Setting a gestureRecognizer for the share gesture ( up direction )
         let swipeRecognizerUp = UISwipeGestureRecognizer(target: self, action: #selector(shareGestureUp(_:)))
         swipeRecognizerUp.direction = .up
         myView.addGestureRecognizer(swipeRecognizerUp)
         
+        // Setting a gestureRecognizer for the share gesture ( left direction )
         let swipeRecognizerLeft = UISwipeGestureRecognizer(target: self, action: #selector(shareGestureLeft(_:)))
         swipeRecognizerLeft.direction = .left
         myView.addGestureRecognizer(swipeRecognizerLeft)
         
+        // Setting tap recognizers for all of the subviews of the pictureView
         let tapRecognizerFirstRectangle = UITapGestureRecognizer(target: self, action: #selector(addPictureToFirstRectangle(_:)))
         firstRectangleView.addGestureRecognizer(tapRecognizerFirstRectangle)
         
@@ -98,35 +107,48 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let tapRecognizerFourthSquare = UITapGestureRecognizer(target: self, action: #selector(addPictureToFourthSquare(_:)))
         fourthSquareView.addGestureRecognizer(tapRecognizerFourthSquare)
         
+        // now we let the viewDidLoad continue normally
         super.viewDidLoad()
 
     }
     
+    // We add some instructions to the viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
+        // We check the image permission. If we don't have the clearence to use image, we display a warning message to the user
         if !checkPermission() {
-            print("No Permission Allowed")
+            warning(withMessage: "For using the save and the random feature, please unlock the permission in settings")
         }
+        // now we let the viewDidAppear continue normally
         super.viewDidAppear(animated)
     }
     
-    func warningPermission(withMessage message: String) {
-        let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
-
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
-        self.present(alert, animated: true)
-    }
-    
+    // We add some instructions to the viewWillTransition ( the device changed orientation )
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        // If the device is now landscape, we change the text and arrow to left, else we set it to down
         if UIDevice.current.orientation.isLandscape {
             myView.arrowDirrection = .left
         } else {
             myView.arrowDirrection = .down
         }
+        // now we let the viewWillTransition continue normally
         super.viewWillTransition(to: size, with: coordinator)
     }
 
+    // This function display a popup warning message with the message sended on argument
+    func warning(withMessage message: String) {
+        // setting the Alert with a warning title and the message sended on argument
+        let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
+
+        // The only possible action is OK ( warning message only)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        // Present the alert
+        self.present(alert, animated: true)
+    }
     
+    
+
+    // Theses IBAction are called when the plus button is tapped OR with the differents UITapRecognizers. We call a picker with the concerned subview send on argument
     @IBAction func addPictureToFirstRectangle(_ sender: Any) {
         callPicker(withPicker: .firstRectangle)
     }
@@ -151,19 +173,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         callPicker(withPicker: .fourthSquare)
     }
     
+    // This function is called when the random button is pressed
     @IBAction func randomizePictures(_ sender: Any) {
+        // We can only do stuff if we have permission to access the photo album
         if checkPermission() {
+            // We have the permission, we start by showing that the pictures are loading ( it can take a while because the pictures can be on iCloud ), so we show an activityIndicator and we display a gray loadingView who will be above everything else ( with animation, it's prettier :-) )
             self.loadingIndicator.startAnimating()
             UIView.animate(withDuration: 0.50, animations: {
                 self.loadingView.alpha = 0.75
             }, completion: nil)
+            // We need to use multithreading because if we don't, the loading interface won't show. We execute the loading query on background
             DispatchQueue.global(qos: .background).async {
+                // Load the pictures
                 let imagesToLoad = self.loadImages()
+                // The pictures are loaded on a array, we can proceed to main thread
                 DispatchQueue.main.async {
-                    print(imagesToLoad.count)
+                    // If we didn't succeed to load at least 3 images, that means that the user don't have enought pictures on his library. We can't continue
                     if ( imagesToLoad.count < 3  ) {
-                        self.warningPermission(withMessage: "You need minimum 4 pictures on your library to use this feature")
+                        // Showing a warning
+                        self.warning(withMessage: "You need minimum 4 pictures on your library to use this feature")
                     } else {
+                        // The user as enought picture. We can proceed. We set the images by watching the disposal of the screen
                         switch InstagridModel.state {
                         case .firstDisplay:
                             self.myView.setImage(ofView: self.firstRectangleImage, image: imagesToLoad[0], withPlusLabel: self.firstRectanglePlusLabel)
@@ -180,6 +210,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                             self.myView.setImage(ofView: self.fourthSquareImage, image: imagesToLoad[3], withPlusLabel: self.fourthSquarePlusLabel)
                         }
                     }
+                    // Everything is over. We can stop the loading animation
                     self.loadingIndicator.stopAnimating()
                     UIView.animate(withDuration: 0.5, animations: {
                         self.loadingView.alpha = 0.0
@@ -187,34 +218,41 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 }
                 }
             } else {
-                warningPermission(withMessage: "The app has no access to your photo library. The random feature cannot run! \r\r Please unlock the access on settings to use the feature.")
+            // We didn't succeed to access the photo library because we don't have the clearence. We display a warning for the user
+                warning(withMessage: "The app has no access to your photo library. The random feature cannot run! \r\r Please unlock the access on settings to use the feature.")
             }
         }
 
+    // This little function will check an equality between all of the Int sended on argument. If one of the int is equal to another, it will send true, else it will send false
     func checkEquality(firstInt: Int, secondInt: Int, thirdInt: Int, fourthInt: Int ) -> Bool {
-        
-        if ( firstInt == secondInt || firstInt == thirdInt || firstInt == fourthInt || secondInt == thirdInt || secondInt == fourthInt || thirdInt == fourthInt ) {
-            return true
-        } else {
-            return false
-        }
+        return ( firstInt == secondInt || firstInt == thirdInt || firstInt == fourthInt || secondInt == thirdInt || secondInt == fourthInt || thirdInt == fourthInt )
     }
     
+    // This function will load an array of random pictures from the photo library
     func loadImages() -> [UIImage] {
+        // Init the result
         var result = [UIImage]()
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate",
                                                          ascending: false)]
         fetchOptions.predicate = NSPredicate(format: "mediaType == %d || mediaType == %d",
                                              PHAssetMediaType.image.rawValue)
+        //Go fetching the pictures with fetchOptions. Return an array of assets
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        
+        // If we fetch less than 4 pictures, we stop here
+        if allPhotos.count < 4 {
+            return result
+        }
+        
+        // Setting randomPictures number
         var randomPictureOne = 0
         var randomPictureTwo = 0
         var randomPictureThree = 0
         var randomPictureFour = 0
-        if allPhotos.count < 4 {
-            return result
-        }
+        
+
+        // While at least one of the 4 number is equal to another, we catch 4 other random number in the range of pictures
             while self.checkEquality(firstInt: randomPictureOne, secondInt: randomPictureTwo, thirdInt: randomPictureThree, fourthInt: randomPictureFour) {
                 let randomRange = 0...allPhotos.count - 1
                 randomPictureOne = Int.random(in: randomRange)
@@ -222,51 +260,71 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 randomPictureThree = Int.random(in: randomRange)
                 randomPictureFour = Int.random(in: randomRange)
             }
+            // We go catch the third first pictures based on random numbers
             result.append ( InstagridModel.getAssetThumbnail(asset: allPhotos[randomPictureOne]) )
             result.append ( InstagridModel.getAssetThumbnail(asset: allPhotos[randomPictureTwo]) )
             result.append ( InstagridModel.getAssetThumbnail(asset: allPhotos[randomPictureThree]) )
+            // We don't need to use ressources for nothing. So we load the fourth one only if there is 4 pictures to load ( thirdDisplay )
             switch InstagridModel.state {
             case .thirdDisplay:
                 result.append ( InstagridModel.getAssetThumbnail(asset: allPhotos[randomPictureFour]) )
             default:
                 break
             }
+        // Result ready to be returned
         return result
     }
     
+    // This function check the permission to access the photo library
     func checkPermission() -> Bool {
+        // By default, we consider we don't have it
         var status = false
+        // We go catch the current status
         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         switch photoAuthorizationStatus {
         case .authorized:
+            // We do have the autorisation. Everything is good!
             status = true
         case .notDetermined:
+            // The user didn't gave the autorisation yet. So we go ask him
             PHPhotoLibrary.requestAuthorization({
                 (newStatus) in
                 if newStatus ==  PHAuthorizationStatus.authorized {
+                    // the user gave us his blessing
                     status = true
                 }
             })
         case .denied:
+            // The user denied..
             break
         case .restricted:
+            // The user denied..
             break
         }
+        // Value ready to be returned
         return status
     }
 
+    // This function is for calling the pickerController. The argument is for telling us in what view the image will be loaded
     func callPicker(withPicker picker: PickerChoose) {
+        // Setting the property pickerChoose
         pickerChoose = picker
+        // Creating a new controller
         let picker = UIImagePickerController()
+        // The user can edit the picture before validate it
         picker.allowsEditing = true
+        // The picker is delegate to the main view
         picker.delegate = self
+        // picker showed in full screen
         picker.modalPresentationStyle = .overCurrentContext
+        // Picker ready to be presented
         present(picker, animated: true)
     }
     
+    // Function called when the picker is closed
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        // The info dictionary may contain multiple representations of the image. You want to use the original.
+        // The info dictionary may contain multiple representations of the image. You want to use the original. But we need to unwrapped it first
         guard let selectedImage = info[.editedImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
@@ -295,6 +353,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
     }
     
+    // Change the disposal of the grid between one of the three available
     @IBAction func switchToFirstDisplay(_ sender: Any) {
         myView.switchDisplay(state: .firstDisplay)
         InstagridModel.state = .firstDisplay
@@ -310,23 +369,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         InstagridModel.state = .thirdDisplay
     }
     
+    // Handle the share gesture up only if the device is in portrait mode
     @objc func shareGestureUp(_ sender: UIGestureRecognizer) {
-        shareGesture(sender: sender, direction: .up)
-    }
-    
-    @objc func shareGestureLeft(_ sender: UIGestureRecognizer) {
-        shareGesture(sender: sender, direction: .left)
-    }
-    
-    func shareGesture(sender: UIGestureRecognizer, direction: Direction) {
-        if ( ( ( UIDevice.current.orientation.isPortrait ) && ( direction == .up ) ) || ( ( UIDevice.current.orientation.isLandscape ) && ( direction == .left ) ) ) {
-            handleShare(withDirection: direction)
+        if ( UIDevice.current.orientation.isPortrait ) {
+        handleShare(withDirection: .up)
         }
     }
     
+    // Handle the share gesture left only if the device is in landscape mode
+    @objc func shareGestureLeft(_ sender: UIGestureRecognizer) {
+        if ( UIDevice.current.orientation.isLandscape ) {
+            handleShare(withDirection: .left )
+        }
+    }
+    
+    // Here is where we handle the share itself in Direction ( to animate it )
     func handleShare(withDirection direction: Direction) {
         var x: CGFloat
         var y: CGFloat
+        // Setting x and y to match the share gesture ( up or left )
         switch direction {
         case .up:
             x = 0
@@ -335,17 +396,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             x = -UIScreen.main.bounds.width
             y = 0
         }
-        let translationTransform = CGAffineTransform(translationX: x, y: y)
-        self.animate(transformation: translationTransform)
+        // We animate the transformation
+        self.animate(transformation: CGAffineTransform(translationX: x, y: y))
+        
+        // We transform the view into an image
         let shareContent = InstagridModel.asImage(ofView: myView)
+        
+        // The activityViewController is used to handle the shareContent as UIImage
         let activityViewController = UIActivityViewController(activityItems: [shareContent as UIImage], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            // When the share is over, we can animate the objects back to their original places and start to animate the arrow again ( when we moved it, it automatically cut the animation )
             self.animate(transformation: .identity )
             self.myView.animateTheArrowWhitoutDirection()
         }
+        // The activityViewController is ready to be presented
         present(activityViewController, animated: true, completion: { })
     }
     
+    // This function is used to animate the view, the swipe label and the random button with the transformation sended on argument
     func animate(transformation: CGAffineTransform) {
         UIView.animate(withDuration: 0.3, animations: {
             self.myView.transform = transformation
