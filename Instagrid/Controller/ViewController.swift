@@ -199,10 +199,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // We can only do stuff if we have permission to access the photo album
         if checkPermission() {
             // We have the permission, we start by showing that the pictures are loading ( it can take a while because the pictures can be on iCloud ), so we show an activityIndicator and we display a gray loadingView who will be above everything else ( with animation, it's prettier :-) )
-            self.loadingIndicator.startAnimating()
-            UIView.animate(withDuration: 0.50, animations: {
-                self.loadingView.alpha = 0.75
-            }, completion: nil)
+            showLoadingInterface()
             // We need to use multithreading because if we don't, the loading interface won't show. We execute the loading query on background
             DispatchQueue.global(qos: .background).async {
                 // Load the pictures
@@ -232,10 +229,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                         }
                     }
                     // Everything is over. We can stop the loading animation
-                    self.loadingIndicator.stopAnimating()
-                    UIView.animate(withDuration: 0.5, animations: {
-                        self.loadingView.alpha = 0.0
-                    }, completion: nil)
+                    self.dismissLoadingInterface()
                 }
                 }
             } else {
@@ -244,6 +238,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
 
+    func showLoadingInterface() {
+        self.loadingIndicator.startAnimating()
+        UIView.animate(withDuration: 0.50, animations: {
+            self.loadingView.alpha = 0.75
+        }, completion: nil)
+
+    }
+    
+    func dismissLoadingInterface() {
+    self.loadingIndicator.stopAnimating()
+    UIView.animate(withDuration: 0.5, animations: {
+    self.loadingView.alpha = 0.0
+    }, completion: nil)
+    }
+    
     // This little function will check an equality between all of the Int sended on argument. If one of the int is equal to another, it will send true, else it will send false
     func checkEquality(firstInt: Int, secondInt: Int, thirdInt: Int, fourthInt: Int ) -> Bool {
         return ( firstInt == secondInt || firstInt == thirdInt || firstInt == fourthInt || secondInt == thirdInt || secondInt == fourthInt || thirdInt == fourthInt )
@@ -419,9 +428,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         // We animate the transformation
         self.animate(transformation: CGAffineTransform(translationX: x, y: y))
-        
+        showLoadingInterface()
+        DispatchQueue.global(qos: .background).async {
         // We transform the view into an image
-        let shareContent = InstagridModel.asImage(ofView: myView)
+        let shareContent = InstagridModel.asImage(ofView: self.myView)
         
         // The activityViewController is used to handle the shareContent as UIImage
         let activityViewController = UIActivityViewController(activityItems: [shareContent as UIImage], applicationActivities: nil)
@@ -430,8 +440,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.animate(transformation: .identity )
             self.animateTheArrowWhitoutDirection()
         }
+            DispatchQueue.main.async {
         // The activityViewController is ready to be presented
-        present(activityViewController, animated: true, completion: { })
+        self.present(activityViewController, animated: true, completion: { })
+        self.dismissLoadingInterface()
+            }
+        }
     }
     
     // This function is used to animate the view, the swipe label and the random button with the transformation sended on argument
