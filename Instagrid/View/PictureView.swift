@@ -28,7 +28,6 @@ class PictureView: UIView {
     private var selectedSquareFirst = UIImageView()
     private var selectedSquareSecond = UIImageView()
     private var selectedSquareThird = UIImageView()
-    
     // This function set the properties with the argument sended by the controller
     func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView) {
         self.firstSquareView = firstSquareView

@@ -243,7 +243,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIView.animate(withDuration: 0.50, animations: {
             self.loadingView.alpha = 0.75
         }, completion: nil)
-
     }
     
     func dismissLoadingInterface() {
@@ -428,11 +427,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         // We animate the transformation
         self.animate(transformation: CGAffineTransform(translationX: x, y: y))
-        showLoadingInterface()
-        DispatchQueue.global(qos: .background).async {
         // We transform the view into an image
         let shareContent = InstagridModel.asImage(ofView: self.myView)
-        
         // The activityViewController is used to handle the shareContent as UIImage
         let activityViewController = UIActivityViewController(activityItems: [shareContent as UIImage], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
@@ -440,12 +436,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.animate(transformation: .identity )
             self.animateTheArrowWhitoutDirection()
         }
-            DispatchQueue.main.async {
         // The activityViewController is ready to be presented
         self.present(activityViewController, animated: true, completion: { })
-        self.dismissLoadingInterface()
-            }
-        }
     }
     
     // This function is used to animate the view, the swipe label and the random button with the transformation sended on argument

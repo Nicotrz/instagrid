@@ -24,13 +24,11 @@ class InstagridModel {
     
     // This function transform a UIView into a UIImage
     static func asImage(ofView myView: UIView) -> UIImage {
-        // Set the GraphicImagerenderer into bounds of the result view
-        let renderer = UIGraphicsImageRenderer(bounds: myView.bounds)
-        // Return the result image by setting the context from the render of the view
-        return renderer.image { rendererContext in
-            myView.layer.render(in: rendererContext.cgContext)
-        }
-        
+        UIGraphicsBeginImageContextWithOptions(myView.bounds.size, myView.isOpaque, 0.0)
+        myView.drawHierarchy(in: myView.bounds, afterScreenUpdates: true)
+        let snapshotImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return snapshotImage!
     }
 
     //This function takes an asset of PHPhotos and transform it into a UIImage
