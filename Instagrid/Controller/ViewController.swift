@@ -101,6 +101,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // We add some instructions to the viewDidLoad
     override func viewDidLoad() {
+        // We check if we have the clearance to load the photo library
+        if checkPermission() {
+            print("Ok we have the clearance")
+        }
+
         // Setting the picture view with the IBOutlets
         myView.setPictureView(firstSquareView: firstSquareView, secondSquareView: secondSquareView, thirdSquareView: thirdSquareView, fourthSquareView: fourthSquareView, firstRectangleView: firstRectangleView, secondRectangleView: secondRectangleView, selectedSquareFirst: selectedSquareFirst, selectedSquareSecond: selectedSquareSecond, selectedSquareThird: selectedSquareThird )
         
@@ -136,16 +141,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // now we let the viewDidLoad continue normally
         super.viewDidLoad()
 
-    }
-    
-    // We add some instructions to the viewDidAppear
-    override func viewDidAppear(_ animated: Bool) {
-        // We check the image permission. If we don't have the clearence to use image, we display a warning message to the user
-        if !checkPermission() {
-            warning(withMessage: "For using the save and the random feature, please unlock the permission in settings")
-        }
-        // now we let the viewDidAppear continue normally
-        super.viewDidAppear(animated)
     }
     
     // We add some instructions to the viewWillTransition ( the device changed orientation )
@@ -397,14 +392,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Handle the share gesture up only if the device is in portrait mode
     @objc func shareGestureUp(_ sender: UIGestureRecognizer) {
-        if ( UIDevice.current.orientation.isPortrait ) {
+        if ( UIApplication.shared.statusBarOrientation.isPortrait ) {
         handleShare(withDirection: .up)
         }
     }
     
     // Handle the share gesture left only if the device is in landscape mode
     @objc func shareGestureLeft(_ sender: UIGestureRecognizer) {
-        if ( UIDevice.current.orientation.isLandscape ) {
+        if ( UIApplication.shared.statusBarOrientation.isLandscape ) {
             handleShare(withDirection: .left )
         }
     }
@@ -476,7 +471,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // This function is called to animate the arrow only whitout knowing the direction
     func animateTheArrowWhitoutDirection() {
         // If the device is portrait oriented, we animate it on the down direction
-        if UIDevice.current.orientation.isPortrait {
+        if UIApplication.shared.statusBarOrientation.isPortrait {
             animateTheArrow(arrowDirrection: .down)
         } else {
             // If the device is landscape oriented, we animate it on the left direction

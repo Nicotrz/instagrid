@@ -64,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				06E832572229BD0000D25D16 /* PictureView.swift */,
+				067AF8392223E7D100D9C523 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -100,7 +101,6 @@
 				06032FFA2223FD3E00B0A90E /* Controller */,
 				06032FF52223FD1200B0A90E /* Fonts */,
 				067AF8352223E7D100D9C523 /* AppDelegate.swift */,
-				067AF8392223E7D100D9C523 /* Main.storyboard */,
 				067AF83C2223E7D300D9C523 /* Assets.xcassets */,
 				067AF83E2223E7D300D9C523 /* LaunchScreen.storyboard */,
 				067AF8412223E7D300D9C523 /* Info.plist */,

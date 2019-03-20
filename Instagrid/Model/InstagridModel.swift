@@ -46,7 +46,7 @@ class InstagridModel {
         requestOptions.deliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
         // If needed, the image will be taken from iCloud
         requestOptions.isNetworkAccessAllowed = true
-        // This option is needed to block the process until the image is fully loaded
+        // This option is needed to block the process until the image is fully loaded ( this function is launch on BG, so no incidence )
         requestOptions.isSynchronous = true
         // The manager request the image for the asset sended as argument, with the size of the asset, on aspectFit mode with the options from requestOptions
         manager.requestImage(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .aspectFit, options: requestOptions, resultHandler: {(result, info)->Void in

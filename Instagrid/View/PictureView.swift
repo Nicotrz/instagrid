@@ -29,6 +29,18 @@ class PictureView: UIView {
     private var selectedSquareSecond = UIImageView()
     private var selectedSquareThird = UIImageView()
     
+    // This function set the properties with the argument sended by the controller
+    func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView) {
+        self.firstSquareView = firstSquareView
+        self.secondSquareView = secondSquareView
+        self.thirdSquareView = thirdSquareView
+        self.fourthSquareView = fourthSquareView
+        self.firstRectangleView = firstRectangleView
+        self.secondRectangleView = secondRectangleView
+        self.selectedSquareFirst = selectedSquareFirst
+        self.selectedSquareSecond = selectedSquareSecond
+        self.selectedSquareThird = selectedSquareThird
+    }
     
     // This function is called to change the grid
     func switchDisplay(state: State ) {
@@ -42,18 +54,6 @@ class PictureView: UIView {
         }
     }
     
-    // This function set the properties with the argument sended by the controller
-    func setPictureView(firstSquareView: UIView, secondSquareView: UIView, thirdSquareView: UIView, fourthSquareView: UIView, firstRectangleView: UIView, secondRectangleView: UIView, selectedSquareFirst: UIImageView, selectedSquareSecond: UIImageView, selectedSquareThird: UIImageView) {
-        self.firstSquareView = firstSquareView
-        self.secondSquareView = secondSquareView
-        self.thirdSquareView = thirdSquareView
-        self.fourthSquareView = fourthSquareView
-        self.firstRectangleView = firstRectangleView
-        self.secondRectangleView = secondRectangleView
-        self.selectedSquareFirst = selectedSquareFirst
-        self.selectedSquareSecond = selectedSquareSecond
-        self.selectedSquareThird = selectedSquareThird
-    }
     
     
     // This function change the view with the argument sended
