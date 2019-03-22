@@ -139,6 +139,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         fourthSquareView.addGestureRecognizer(tapRecognizerFourthSquare)
         
         // now we let the viewDidLoad continue normally
+        animateTheArrowWhitoutDirection()
         super.viewDidLoad()
 
     }
