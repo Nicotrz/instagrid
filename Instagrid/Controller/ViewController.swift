@@ -323,12 +323,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     // the user gave us his blessing
                     status = true
                 }
-            })
+                })
         case .denied:
             // The user denied..
             break
         case .restricted:
             // The user denied..
+            break
+        @unknown default:
+            // Unknown case - update for swift 5
             break
         }
         // Value ready to be returned
