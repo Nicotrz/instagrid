@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>MyPicturesGrid</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,11 +17,22 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Your access is needed to save the picture and use the random pictures feature</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Your access is needed to save the picture and use the random pictures feature</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your access is needed to save the picture and use the random pictures feature</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Delm-Medium.otf</string>
+		<string>ThirstySoftRegular.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,16 +54,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Delm-Medium.otf</string>
-		<string>ThirstySoftRegular.otf</string>
-	</array>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Your access is needed to save the picture and use the random pictures feature</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your access is needed to save the picture and use the random pictures feature</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Your access is needed to save the picture and use the random pictures feature</string>
 </dict>
 </plist>

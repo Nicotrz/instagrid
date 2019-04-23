@@ -22,7 +22,7 @@
 		06032FF62223FD1C00B0A90E /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
 		06032FF72223FD1C00B0A90E /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		066FA97F22313AF500B96C69 /* InstagridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagridModel.swift; sourceTree = "<group>"; };
-		067AF8322223E7D100D9C523 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		067AF8322223E7D100D9C523 /* MyPicturesGrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPicturesGrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		067AF8352223E7D100D9C523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		067AF8372223E7D100D9C523 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		067AF83A2223E7D100D9C523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		067AF8332223E7D100D9C523 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				067AF8322223E7D100D9C523 /* Instagrid.app */,
+				067AF8322223E7D100D9C523 /* MyPicturesGrid.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,9 +111,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		067AF8312223E7D100D9C523 /* Instagrid */ = {
+		067AF8312223E7D100D9C523 /* MyPicturesGrid */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 067AF8442223E7D300D9C523 /* Build configuration list for PBXNativeTarget "Instagrid" */;
+			buildConfigurationList = 067AF8442223E7D300D9C523 /* Build configuration list for PBXNativeTarget "MyPicturesGrid" */;
 			buildPhases = (
 				067AF82E2223E7D100D9C523 /* Sources */,
 				067AF82F2223E7D100D9C523 /* Frameworks */,
@@ -123,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = Instagrid;
+			name = MyPicturesGrid;
 			productName = Instagrid;
-			productReference = 067AF8322223E7D100D9C523 /* Instagrid.app */;
+			productReference = 067AF8322223E7D100D9C523 /* MyPicturesGrid.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +144,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 067AF82D2223E7D100D9C523 /* Build configuration list for PBXProject "Instagrid" */;
+			buildConfigurationList = 067AF82D2223E7D100D9C523 /* Build configuration list for PBXProject "MyPicturesGrid" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -157,7 +157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				067AF8312223E7D100D9C523 /* Instagrid */,
+				067AF8312223E7D100D9C523 /* MyPicturesGrid */,
 			);
 		};
 /* End PBXProject section */
@@ -366,7 +366,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		067AF82D2223E7D100D9C523 /* Build configuration list for PBXProject "Instagrid" */ = {
+		067AF82D2223E7D100D9C523 /* Build configuration list for PBXProject "MyPicturesGrid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				067AF8422223E7D300D9C523 /* Debug */,
@@ -375,7 +375,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		067AF8442223E7D300D9C523 /* Build configuration list for PBXNativeTarget "Instagrid" */ = {
+		067AF8442223E7D300D9C523 /* Build configuration list for PBXNativeTarget "MyPicturesGrid" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				067AF8452223E7D300D9C523 /* Debug */,
