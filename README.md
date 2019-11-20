@@ -20,3 +20,4 @@ This app let you create simple photomontage with your personnal pictures on iOS.
 - 3 dispositions supported for the grid
 - Shuffle function to let the app create montages for you
 - Share function supported to send the result anywhere you want
+- Use the app on portrait or landscape. It's all supported
