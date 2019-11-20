@@ -4,3 +4,12 @@
 
 <a href="https://apps.apple.com/us/app/mypicturesgrid/id1460604439"><img src="https://github.com/Nicotrz/instagrid/blob/master/1200x630wa.png?raw=true" title="MyPicturesGrid" alt="Nicotrz"></a>
 <!-- [![FVCproductions](https://github.com/Nicotrz/instagrid/blob/master/1200x630wa.png?raw=true)](https://github.com/Nicotrz) -->
+
+## Setup
+
+To edit the code, just clone the repo.
+To use the app, download it for free on the App store
+
+## Features
+
+<img src="https://github.com/Nicotrz/instagrid/blob/master/392x696bb.jpg?raw=true" title="MyPicturesGrid" alt="Nicotrz">
