@@ -39,3 +39,7 @@ For the project, this app use the MVC Design Pattern:
 - The View handle the transitions between the dispositions, and set the image received from the ViewController
 - The Controller handle the communication with the view and the model, the UIGestures done by the user, the photo permissions and dialog boxes, and multithreading for background photos load
 - The Model  transform an UIView into a UIImage and an PHPAsset into an UIImage
+
+## Credits
+
+Nicolas Sommereijns - 2019
